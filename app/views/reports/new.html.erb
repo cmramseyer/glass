@@ -1,0 +1,77 @@
+<%= form_tag('/reports', method: :get, target: :_blank, html: {class: 'form-horizontal form-label-left'}) do %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Report Selection</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+          
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Report Type</label>
+              <%= select_tag('type', options_for_select(@options_for_type), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Header Style</label>
+              <%= select_tag('header', options_for_select(@options_for_header), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Body Style</label>
+              <%= select_tag('body', options_for_select(@options_for_body), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Footer Style</label>
+              <%= select_tag('footer', options_for_select(@options_for_footer), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Margin</label>
+              <%= select_tag('margin', options_for_select(@options_for_margin), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-2">
+            <div class="form-group">
+              <label>Page Size</label>
+              <%= select_tag('page_size', options_for_select(@options_for_page_size), class: 'form-control col-md-3 col-xs-6') %>
+            </div>
+          </div>
+
+          
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+        
+
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+          <%= button_tag "Generate", class: 'btn btn-primary btn-sm' %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+

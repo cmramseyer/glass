@@ -1,0 +1,19 @@
+cut:
+  name: 'Cut'
+  workload: 0.1
+
+drill:
+  name: 'Drill'
+  workload: 0.15
+
+polish:
+  name: 'Polish'
+  workload: 0.2
+
+temper:
+  name: 'Temper'
+  workload: 1.5
+
+delivery:
+  name: 'Delivery'
+  workload: 0.3

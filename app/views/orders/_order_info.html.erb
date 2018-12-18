@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <div class="title_left">
+          <h2>Order #<%= order.id %></h2>
+        </div>
+        <div class="nav navbar-right">
+          <% if stage %>
+            <h2><i class="fa <%= stage.icon_name %>"></i> <%= stage.name %> Stage</h2>
+          <% end %>
+        </div>
+        
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <section class="content invoice">
+          <!-- title row -->
+          <!-- info row -->
+          <div class="row invoice-info">
+            <div class="col-sm-3 invoice-col">
+              <i class="fa fa-user"></i> <strong>Customer</strong>
+              <address>
+                  <%= order.customer %>
+              </address>
+            </div>
+            <div class="col-sm-3 invoice-col">
+              <i class="fa fa-coffee"></i> <strong>Order description</strong>
+              <address>
+                  <%= order.description %>
+              </address>
+            </div>
+            <div class="col-sm-3 invoice-col">
+              <i class="fa fa-map-marker"></i> <strong>Delivery Address</strong>
+              <address>
+                  <%= order.delivery_address %>
+              </address>
+            </div>
+            <div class="col-sm-3 invoice-col">
+              <i class="fa fa-exclamation-circle"></i> <strong>Priority</strong>
+              <address>
+                <%= priority_label(order.priority) %> 
+              </address>
+            </div>
+          </div>  
+        </section>
+
+        <% if stage %>
+          <%= link_to "<i class='fa fa-pencil'></i> View Order Full Details".html_safe, order_path(id: order.id), class: 'btn btn-primary btn-xs' %>
+        <% else %>
+          <%= link_to "<i class='fa fa-print'></i> Print Order".html_safe, order_order_report_index_path(order_id: order.id), class: 'btn btn-primary btn-xs', target: :_blank %>
+          <%= link_to "<i class='fa fa-money'></i> Print Invoice".html_safe, order_invoice_report_index_path(order_id: order.id), class: 'btn btn-success btn-xs', target: :_blank %>
+          <%= link_to "<i class='fa fa-tag'></i> Package Label".html_safe, order_zebra_package_label_index_path(order_id: order.id), class: 'btn btn-info btn-xs', target: :_blank %>
+          <%= link_to "<i class='fa fa-tag'></i> Fragile Package Label".html_safe, order_zebra_fragile_package_label_index_path(order_id: order.id), class: 'btn btn-info btn-xs', target: :_blank %>
+        <% end %>
+      </div>  
+
+    </div>
+  </div>
+</div>
+

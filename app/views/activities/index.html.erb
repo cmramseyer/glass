@@ -1,0 +1,27 @@
+<div class="col-md-12 col-sm-12 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2> Recent Activity</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>User</th>
+            <th>Action</th>
+            <th>Detail</th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="tbody-activities">
+          <% @activities.each do |activity| %>
+            <%= render partial: 'activity', locals: {activity: activity} %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

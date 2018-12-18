@@ -1,0 +1,22 @@
+<% if order_stage.has_trackings? %>
+
+  <% active = order_stage.get_color(stage) %>
+
+  <div class="animated flipInY col-lg-2 col-md-2 col-sm-4 col-xs-6">
+    <div class="tile-stats <%= active %>">
+      <div class="icon"><i class="fa <%= order_stage.stage_icon_name %>"></i>
+      </div>
+      <div class="count"><%= order_stage.done_percentage_string %></div>
+      <h3 class=""><%= order_stage.stage_name %></h3>
+      <% if active == '' %>
+        <span class="count">
+          <%= link_to "<i class='fa fa-cog'></i> View Stage".html_safe, order_stage_path(order_id: order_stage.order_id, id: order_stage.stage_id), class: 'btn btn-primary btn-xs' %>
+          
+        </span>
+      <% else %>
+        <p>Stage Active</p>
+      <% end %>
+    </div>
+  </div>
+
+<% end %>

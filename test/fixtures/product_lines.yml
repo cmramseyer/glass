@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product_id: 1
+  order_id: 1
+  holes_quantity: 1
+  polish_type_id: 1
+  tempered: false
+  quantity: 1
+  description: MyString
+  width: 1
+  height: 1
+
+two:
+  product_id: 1
+  order_id: 1
+  holes_quantity: 1
+  polish_type_id: 1
+  tempered: false
+  quantity: 1
+  description: MyString
+  width: 1
+  height: 1

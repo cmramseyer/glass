@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @product_line.product_id %>
+</p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @product_line.order_id %>
+</p>
+
+<p>
+  <strong>Holes quantity:</strong>
+  <%= @product_line.holes_quantity %>
+</p>
+
+<p>
+  <strong>Polish type:</strong>
+  <%= @product_line.polish_type_id %>
+</p>
+
+<p>
+  <strong>Tempered:</strong>
+  <%= @product_line.tempered %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product_line.quantity %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_line.description %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @product_line.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @product_line.height %>
+</p>
+
+<%= link_to 'Edit', edit_product_line_path(@product_line) %> |
+<%= link_to 'Back', product_lines_path %>

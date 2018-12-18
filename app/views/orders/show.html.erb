@@ -1,0 +1,20 @@
+<%= render partial: 'order_info', locals: {order: @order, stage: nil} %>
+
+
+
+<div class="row">
+  <% if @order.activated? %>
+    <%= render partial: 'order_stage_top_widget', locals: {order_stage: @cut_stage, stage: @stage} %>
+    <%= render partial: 'order_stage_top_widget', locals: {order_stage: @drill_stage, stage: @stage} %>
+    <%= render partial: 'order_stage_top_widget', locals: {order_stage: @polish_stage, stage: @stage} %>
+    <%= render partial: 'order_stage_top_widget', locals: {order_stage: @temper_stage, stage: @stage} %>
+    <%= render partial: 'order_stage_top_widget', locals: {order_stage: @delivery_stage, stage: @stage} %>
+  <% else %>
+    <%#= render partial: 'alert_order_not_activated' %>
+  <% end %>
+
+</div>
+
+<%= render partial: '/product_lines/product_lines_table', locals: {product_lines: @order.product_lines} %>
+
+<%#= render partial: 'footer_buttons', locals: {order: @order} %>

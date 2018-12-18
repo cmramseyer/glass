@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        
+      <div class="x_content">
+
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Qty.</th>
+              <th>Width</th>
+              <th>Height</th>
+              <th>Available works</th>
+              <th>Tempered</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% trackings.each do |tracking| %>
+              <tr>
+                <th scope="row"><%= tracking.product_line.product.name %></th>
+                <td><%= tracking.product_line.quantity %></td>
+                <td><%= tracking.product_line.width %></td>
+                <td><%= tracking.product_line.height %></td>
+                <td><%= tracking.available_works %></td>
+                <td><%= tracking.done %></td>
+                <td><%= complete_work(tracking) %></td>
+                <td><%= render partial: '/trackings/work_logs', locals: {tracking: tracking } %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+              

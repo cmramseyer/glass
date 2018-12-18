@@ -1,0 +1,56 @@
+product_line_001:
+  product: fl4cle
+  order: basic_order
+  quantity: 5
+  width: 1000
+  height: 1000
+  holes_quantity: 1
+  polish_type: polish_flat
+  tempered: true
+  
+# for a order already cutted, not delivered
+product_line_002:
+  product: fl4cle
+  order: order_cutted
+  quantity: 5
+  width: 1000
+  height: 1000
+  holes_quantity: 0
+  polish_type: polish_none
+  tempered: false
+
+product_line_201:
+  product: fl4cle
+  quantity: 5
+  width: 1000
+  height: 1000
+  holes_quantity: 0
+  polish_type: polish_none
+  tempered: false
+  
+
+###############################################
+# PRODUCT LINES FOR TESTING TRACKING GENERATION
+###############################################
+
+# C>D>P>T>D
+product_line_cdptd:
+  product: fl4cle
+  order: inactive_order_cdptd
+  quantity: 5
+  width: 1000
+  height: 1000
+  holes_quantity: 1
+  polish_type: polish_flat
+  tempered: true
+
+# C>D
+product_line_cd:
+  product: fl4cle
+  order: inactive_order_cd
+  quantity: 5
+  width: 1000
+  height: 1000
+  holes_quantity: 0
+  polish_type: polish_none
+  tempered: false

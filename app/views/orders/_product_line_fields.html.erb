@@ -1,0 +1,61 @@
+<div class="row nested-fields">
+                
+  <div class="col-xs-12 col-md-3">
+    <div class="form-group">
+      <label>Product</label>
+      <%= f.select :product_id, options_for_select(Product.all.collect {|prod| [prod.name, prod.id]}), {include_blank: false}, {class: 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-1">
+    <div class="form-group">
+      <label>Quantity</label>
+      <%= f.number_field :quantity, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-2">
+    <div class="form-group">
+      <label>Width</label>
+      <%= f.number_field :width, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-1">
+    <div class="form-group">
+      <label>Height</label>
+      <%= f.number_field :height, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-1">
+    <div class="form-group">
+      <label>Holes</label>
+      <%= f.number_field :holes_quantity, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-2">
+    <div class="form-group">
+      <label>Polish Type</label>
+      <%= f.select :polish_type_id, options_for_select(PolishType.all.collect {|polish| [polish.name, polish.id]}), {class: 'form-control'} %>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-1">
+    <div class="form-group">
+      <label>Tempered?</label>
+      <div class="checkbox">
+        <%= f.check_box :tempered, class: 'flat' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xs-12 col-md-1">
+    <div class="form-group">
+      <label></label>
+      <%= link_to_remove_association "<i class='fa fa-trash'></i> Remove".html_safe, f, class: 'btn btn-xs btn-danger' %>
+    </div>
+  </div>
+
+</div>

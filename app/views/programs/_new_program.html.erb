@@ -1,0 +1,18 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2> New Program</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+      <p>Write a valid program following the sample program help, and press the Create Button</p>
+      <%= form_for program, remote: true do |f| %>
+
+        <%= f.text_area "new_program", rows: 20, class: 'form-control' %>
+        <%= f.submit "Create New Program", class: 'btn btn-primary btn-sm' %>
+      <% end %>
+    </div>
+
+    
+  </div>
+</div>

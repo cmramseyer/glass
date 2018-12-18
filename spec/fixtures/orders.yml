@@ -1,0 +1,41 @@
+basic_order:
+  customer: 'A customer'
+  description: 'A description'
+  delivery_address: 'An address'
+  status: 0
+  priority: '2 - Normal'
+  activated_date: null
+
+inactive_order:
+  customer: 'A customer'
+  description: 'A description'
+  delivery_address: 'An address'
+  status: 0
+  priority: '2 - Normal'
+  activated_date: null
+  # product_lines: product_line_201
+
+
+order_cutted:
+  customer: 'A customer'
+  description: 'Order active and already 100% cutted'
+  delivery_address: 'An address'
+  status: 1
+  priority: '2 - Normal'
+  activated_date: <%= 1.week.ago %>
+
+inactive_order_cdptd:
+  customer: 'A customer'
+  description: 'Order with one line, drill, polish and temper'
+  delivery_address: 'An address'
+  status: 1
+  priority: '2 - Normal'
+  activated_date: <%= 1.week.ago %>
+
+inactive_order_cd:
+  customer: 'A customer'
+  description: 'Order with one line, only cut and delivery'
+  delivery_address: 'An address'
+  status: 1
+  priority: '2 - Normal'
+  activated_date: <%= 1.week.ago %>

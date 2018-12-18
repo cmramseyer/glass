@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Historical area per product ordered</h2>
+        
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <div data-legends="<%= @legends %>" data-values="<%= @values %>" id="pie" style="height:350px;"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Workload per stage, by day</h2>
+        
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+
+        <div data-days="<%= @echart_line_days %>" data-values="<%= @echart_line_values %>" id="echart_line" style="height:350px;"></div>
+
+      </div>
+    </div>
+  </div>
+</div>
+

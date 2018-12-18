@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Glass Sign in</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="login">
+    <div class="login_wrapper">
+      <%= render partial: '/layouts/login_alerts', locals: {notice: notice, alert: alert} %>
+      <section class="login_content">  
+        <%= yield %>
+      </section>
+    </div>
+    <%= javascript_include_tag 'application' %>
+  </body>
+</html>
+  

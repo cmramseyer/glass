@@ -1,0 +1,106 @@
+
+
+
+
+<%= form_for @order, html: {class: 'form-horizontal form-label-left'} do |f| %>
+
+  <% if order.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger alert-dismissible fade in" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">×</span>
+      </button>
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Order Info</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Customer
+              <span class="required">*</span>
+            </label>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+              <%= f.text_field :customer, class: 'form-control col-md-7 col-xs-12' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Description of the order
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.text_field :description, class: 'form-control col-md-7 col-xs-12', placeholder: 'e.g. New Vegas Hotel or Bank Office Renovation' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Delivery address
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.text_field :delivery_address, class: 'form-control col-md-7 col-xs-12' %>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Priority
+            </label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <%= f.select :priority, [["2 - Normal", "2 - Normal"], ["1 - High", "1 - High"], ["3 - Low", "3 - Low"]], class: 'form-control col-md-3 col-xs-6'  %>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+        
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Product Lines</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+          <%= f.fields_for :product_lines do |ff| %>
+            <%= render partial: '/orders/product_line_fields', locals: {f: ff} %>
+          <% end %>
+            
+            
+          <%= link_to_add_association "<i class='fa fa-plus'></i> Add product line".html_safe, f, "product_lines", class: 'btn btn-xs btn-primary' %>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="x_panel">
+        <div class="x_content">
+         <%= f.submit %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+

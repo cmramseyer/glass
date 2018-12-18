@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Trackings</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product line</th>
+      <th>Stage</th>
+      <th>Done</th>
+      <th>Next tracking</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trackings.each do |tracking| %>
+      <tr>
+        <td><%= tracking.product_line_id %></td>
+        <td><%= tracking.stage_id %></td>
+        <td><%= tracking.done %></td>
+        <td><%= tracking.next_tracking_id %></td>
+        <td><%= link_to 'Show', tracking %></td>
+        <td><%= link_to 'Edit', edit_tracking_path(tracking) %></td>
+        <td><%= link_to 'Destroy', tracking, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Tracking', new_tracking_path %>

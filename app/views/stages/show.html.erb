@@ -1,0 +1,13 @@
+<%= render partial: '/orders/order_info', locals: {order: @order, stage: @stage} %>
+
+<div class="row">
+  <%= render partial: '/orders/order_stage_top_widget', locals: {order_stage: @cut_stage, stage: @stage} %>
+  <%= render partial: '/orders/order_stage_top_widget', locals: {order_stage: @drill_stage, stage: @stage} %>
+  <%= render partial: '/orders/order_stage_top_widget', locals: {order_stage: @polish_stage, stage: @stage} %>
+  <%= render partial: '/orders/order_stage_top_widget', locals: {order_stage: @temper_stage, stage: @stage} %>
+  <%= render partial: '/orders/order_stage_top_widget', locals: {order_stage: @delivery_stage, stage: @stage} %>
+</div>
+
+<%= render partial: @order_stage, locals: {trackings: @order_stage.trackings} %>
+
+<%#= render partial: 'footer_buttons', locals: {order: @order} %>

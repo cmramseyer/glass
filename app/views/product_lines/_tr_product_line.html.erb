@@ -1,0 +1,17 @@
+<tr>
+  <th scope="row"><%= product_line.product.name %></th>
+  <td><%= product_line.quantity %></td>
+  <td><%= product_line.width %></td>
+  <td><%= product_line.height %></td>
+  <td><%= product_line.total_area %></td>
+  <td><%= product_line.total_weight %></td>
+  <td><%= product_line.holes_quantity %></td>
+  <td><%= product_line.polish_type.try(:name) %></td>
+  <td><%= product_line.tempered? ? "YES" : "NO" %></td>
+  <td></td>
+  <td>
+    <%= link_to "<i class='fa fa-tag'></i> Default".html_safe, product_line_zebra_default_label_index_path(product_line_id: product_line.id), class: 'btn btn-info btn-xs', target: :_blank %>
+    <%= link_to "<i class='fa fa-tag'></i> Alt.".html_safe, product_line_zebra_alternative_label_index_path(product_line_id: product_line.id), class: 'btn btn-warning btn-xs', target: :_blank %>
+    
+  </td>
+</tr>

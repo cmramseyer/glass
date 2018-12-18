@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Polish Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @polish_types.each do |polish_type| %>
+      <tr>
+        <td><%= polish_type.name %></td>
+        <td><%= link_to 'Show', polish_type %></td>
+        <td><%= link_to 'Edit', edit_polish_type_path(polish_type) %></td>
+        <td><%= link_to 'Destroy', polish_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Polish Type', new_polish_type_path %>

@@ -1,0 +1,33 @@
+<div class="col-md-4 col-sm-6 col-xs-12">
+  <div class="x_panel">
+    <div class="x_title">
+      <h2> Pending Cuts</h2>
+      <div class="clearfix"></div>
+    </div>
+    <div class="x_content">
+
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Code</th>
+            <th>Qty</th>
+            <th>Width</th>
+            <th>Height</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% available_cuts.each do |tracking| %>
+            <tr>
+              <td><%= tracking.product_line_order.id %></td>
+              <td><%= tracking.product_line_product_code %></td>
+              <td><%= tracking.available_works %></td>
+              <td><%= tracking.product_line_width %></td>
+              <td><%= tracking.product_line_height %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Glass</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="index.html" class="site_title"><i class="fa fa-glass"></i> <span>Glass</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>Production</h3>
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="/orders/new"><i class="fa fa-plus"></i> New Order
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/orders"><i class="fa fa-cogs"></i> In Progress
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/programs/new"><i class="fa fa-cut"></i> Cut Machine
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/programs"><i class="fa fa-check-square-o"></i> Programs Executed
+                    </a>
+                  </li>
+                </ul>
+                <h3>Dashboard</h3>
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="/reports/new"><i class="fa fa-file-o"></i> Reports
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/stats"><i class="fa fa-bar-chart"></i> Stats
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/activities"><i class="fa fa-eye"></i> Activity
+                    <span id="span-menu-activity" class="label-blink label label-info">New!</span>
+                    </a>
+                  </li>
+                </ul>
+                <h3>Configuration</h3>
+                <ul class="nav side-menu">
+                  <li>
+                    <a href="/products"><i class="fa fa-database"></i> Products
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/stages"><i class="fa fa-cog"></i> Stages
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- /menu footer buttons -->
+            
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li class="">
+                  <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-user"></i>
+                    <%= current_user.username %>
+                    <span class=" fa fa-angle-down"></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-usermenu pull-right">
+                    
+                    <li>
+                      <%= link_to '<i class="fa fa-sign-out pull-right"></i> Logout'.html_safe, destroy_user_session_path, method: :delete %>
+                    </li>
+                  </ul>
+                </li>
+
+                
+
+                <li role="presentation" class="dropdown">
+                  <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
+                    <i class="fa fa-question-circle"></i>
+                    <span class="badge bg-red">4</span>
+                  </a>
+                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                    <li>
+                      <a>
+                        <span>Create a new order</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Go to the Cut Machine in order to cut order products</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>Go to each order stages, finishing works</span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>View last activities and stats</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+
+                <li>
+                  <a class="menu_toggle">
+                    <span id="span-activation-success" class="label label-success span-activation-blink"></span>
+                    <span id="span-activation-fail" class="label label-danger span-activation-blink"></span>
+                  </a>
+                </li>
+                
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <%= render partial: '/layouts/alerts', locals: {notice: notice, alert: alert} %>
+            <%= yield %>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-left">
+            <span class="blue">Glass Demo App made by Carlos Ramseyer</span>
+          </div>
+          <div class="pull-right">
+            <span class="green">Gentelella - Bootstrap Admin Template by</span> <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+    <!-- /footer content -->
+      </div>
+    </div>
+    <%#= javascript_include_tag 'application' %>
+    
+  </body>
+</html>
+  

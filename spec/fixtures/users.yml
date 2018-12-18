@@ -1,0 +1,4 @@
+admin:
+  username: 'admin'
+  email: 'admin@glass.com'
+  admin: true
