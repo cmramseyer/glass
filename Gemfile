@@ -39,7 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 # gem 'gentelella-rails'
-gem 'gentelella-rails', path: '/home/carlos/proyectos/gentelella-glass'
+gem 'gentelella-rails', github: "cmramseyer/gentelella-glass"
 
 # for decorator pattern
 gem 'draper'
@@ -65,6 +65,8 @@ gem 'pundit'
 
 gem 'active_model_serializers', '0.10.0'
 
+gem 'unicorn'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
@@ -82,9 +84,8 @@ group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
 
-  gem 'capistrano', '~> 3.6'
-  gem 'capistrano-rails', '~> 1.1'
-  gem 'capistrano-rvm'
+  
+
 
 end
 
@@ -96,6 +97,20 @@ end
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rubocop'
+
+  gem 'capistrano', '~> 3.11.0'
+  gem 'capistrano-rvm' #, github: "capistrano/rvm"
+
+  gem 'capistrano-bundler',   '~> 1.1.3'
+  gem 'capistrano-rails',     '~> 1.1.7'
+  # Add this if you're using rbenv
+  # gem 'capistrano-rbenv', github: "capistrano/rbenv"
+
+
+  gem 'rvm-capistrano'
+
+  gem 'capistrano3-unicorn'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
