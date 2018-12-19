@@ -12,7 +12,7 @@ gem 'rails', '~> 5.0.2'
 # Use sqlite3 as the database for Development/Test enviroments
 gem 'sqlite3'
 # Use postgresql for Production
-gem 'pg'
+gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
