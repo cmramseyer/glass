@@ -1,5 +1,9 @@
+require 'dotenv'
+Dotenv.load
+
 # Set the working application directory
 # working_directory "/path/to/your/app"
+
 root = ENV['DEPLOY_PATH_UNICORN'] 
 
 working_directory = root
