@@ -6,6 +6,10 @@ Dotenv.load
 lock "~> 3.11.0"
 # lock "~> 3.5.0"
 
+set :rvm_type, :user
+set :rvm_ruby_version, '2.3.1@glass'
+
+
 set :application, "glass"
 set :repo_url, 'git@github.com:cmramseyer/glass.git' # ENV['REPO_URL']
 
