@@ -2,22 +2,22 @@
 # Set the working application directory
 # working_directory "/path/to/your/app"
 
-root = ENV['DEPLOY_PATH_UNICORN'] 
+root = '/home/cayeta/glass/current'
 
 working_directory = root
 
 # Unicorn PID file location
 # pid "/path/to/pids/unicorn.pid"
-pid ENV['PID_UNICORN_PATH']
+pid '/home/cayeta/glass/shared/tmp/pids/unicorn.pid'
 
 # Path to logs
 # stderr_path "/path/to/log/unicorn.log"
 # stdout_path "/path/to/log/unicorn.log"
-stderr_path ENV['LOG_UNICORN_PATH']
-stdout_path ENV['LOG_UNICORN_PATH']
+stderr_path '/home/cayeta/glass/shared/log/unicorn.log'
+stdout_path '/home/cayeta/glass/shared/log/unicorn.log'
 
 # Unicorn socket
-listen ENV['SOCKET_UNICORN_PATH']
+listen '/home/cayeta/glass/shared/tmp/sockets/unicorn_glass.sock'
 
 # Number of processes
 # worker_processes 4
