@@ -25,8 +25,6 @@ set :repo_url, 'git@github.com:cmramseyer/glass.git' # ENV['REPO_URL']
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, ENV['DEPLOY_PATH']
 
-set :rvm_ruby_version, '2.5.1@glass'
-
 set :unicorn_config_path, ENV['CONFIG_UNICORN_PATH']
 
 

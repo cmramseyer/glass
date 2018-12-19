@@ -21,7 +21,7 @@ require "capistrano/scm/git"
 install_plugin Capistrano::SCM::Git
 
 set :rvm_type, :user
-set :rvm_ruby_version, '2.5.1@glass'
+set :rvm_ruby_version, '2.3.1@glass'
 
 # Include tasks from other gems included in your Gemfile
 #
