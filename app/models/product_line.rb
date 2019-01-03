@@ -5,9 +5,10 @@ class ProductLine < ApplicationRecord
 
   has_many :trackings
 
-  validates :quantity, presence: true, numericality: { greater_than: 0 }
-  validates :width, presence: true
-  validates :height, presence: true
+  validates :quantity, presence: true, numericality: { greater_than: 0, less_than: 99999 }
+  validates :width, presence: true, numericality: { greater_than: 100, less_than: 3600}
+  validates :height, presence: true, numericality: { greater_than: 100, less_than: 3600}
+  validates :holes_quantity, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 100}
 
   # delegate to product
   delegate :name, to: :product, prefix: true, allow_nil: false
