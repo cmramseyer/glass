@@ -1,3 +1,35 @@
+// code added for bug
+// https://github.com/puikinsh/gentelella/issues/201
+(function($,sr){
+ 
+  // debouncing function from John Hann
+  // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+  var debounce = function (func, threshold, execAsap) {
+      var timeout;
+ 
+      return function debounced () {
+          var obj = this, args = arguments;
+          function delayed () {
+              if (!execAsap)
+                  func.apply(obj, args);
+              timeout = null; 
+          };
+ 
+          if (timeout)
+              clearTimeout(timeout);
+          else if (execAsap)
+              func.apply(obj, args);
+ 
+          timeout = setTimeout(delayed, threshold || 100); 
+      };
+  }
+  // smartresize 
+  jQuery.fn[sr] = function(fn){  return fn ? this.bind('resize', debounce(fn)) : this.trigger(sr); };
+ 
+})(jQuery,'smartresize');
+// code added
+
+
 function turn_on_checkbox_style(){
   if ($("input.flat")[0]) {
       
@@ -18,6 +50,45 @@ function turn_on_sidebar_menu(){
     $RIGHT_COL = $('.right_col'),
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
+
+  // TODO: This is some kind of easy fix, maybe we can improve this
+  var setContentHeight = function () {
+    // reset height
+    $RIGHT_COL.css('min-height', $(window).height());
+
+    var bodyHeight = $BODY.outerHeight(),
+        footerHeight = $BODY.hasClass('footer_fixed') ? -10 : $FOOTER.height(),
+        leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+        contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+
+    // normalize content
+    contentHeight -= $NAV_MENU.height() + footerHeight;
+
+    $RIGHT_COL.css('min-height', contentHeight);
+  };
+
+  $SIDEBAR_MENU.find('a').on('click', function(ev) {
+    var $li = $(this).parent();
+
+    if ($li.is('.active')) {
+        $li.removeClass('active active-sm');
+        $('ul:first', $li).slideUp(function() {
+            setContentHeight();
+        });
+    } else {
+        // prevent closing menu if we are on child menu
+        if (!$li.parent().is('.child_menu')) {
+            $SIDEBAR_MENU.find('li').removeClass('active active-sm');
+            $SIDEBAR_MENU.find('li ul').slideUp();
+        }
+        
+        $li.addClass('active');
+
+        $('ul:first', $li).slideDown(function() {
+            setContentHeight();
+        });
+    }
+  });
 
 
   // toggle small or large menu
