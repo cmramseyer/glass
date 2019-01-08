@@ -1,3 +1,6 @@
+<%= link_to "Click here to view the JSON response of this view", api_v1_order_path(@order), class: "btn btn-danger", target: "_blank" %>
+
+
 <%= render partial: 'order_info', locals: {order: @order, stage: nil} %>
 
 
