@@ -114,6 +114,8 @@ end
 
   gem 'capistrano3-unicorn'
 
+  gem 'seed_dump'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -49,7 +49,7 @@ class OrdersController < ApplicationController
 
     @order = Service::FullOrderActivation.new(@order, current_user).run
 
-    flash[:notice] = 'Order was successfully created and Order Activation process job were launched.'
+    flash[:notice] = 'Order was successfully created and Order Activation process job was launched.'
     redirect_to @order, status: '302'
 
   rescue StandardError => e

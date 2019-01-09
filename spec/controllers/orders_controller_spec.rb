@@ -48,7 +48,7 @@ RSpec.describe OrdersController, type: :controller do
 
       it "has notice message" do
         post :create, params: { order: @order_params }
-        expect(flash[:notice]).to be == "Order was successfully created and Order Activation process job were launched."
+        expect(flash[:notice]).to be == "Order was successfully created and Order Activation process job was launched."
       end
 
       it "has status 302" do
@@ -74,7 +74,7 @@ RSpec.describe OrdersController, type: :controller do
 
       it "has notice message" do
         post :create, params: { order: @order_params }
-        expect(flash[:notice]).to be == "Order was successfully created and Order Activation process job were launched."
+        expect(flash[:notice]).to be == "Order was successfully created and Order Activation process job was launched."
       end
 
       it "has status 302" do
