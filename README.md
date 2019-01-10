@@ -2,13 +2,16 @@
 
 This readme is in progress and is updated day by day.
 
-Glass simulates a glass products manufactory app.
+Glass is a glass products manufactory app. It supports the tracking through five production stages: Cut, Drill, Polish, Temper and Delivery.
+
+![Production stages](stages.png)
 
 # Functionality
 
 * Create new order
 * Order activation
 * PDF reports and ZPL labels
+* Perform cuts simulating a CNC automatic machine
 * Update order progress through stages
 
 ### Create New Orders
@@ -18,7 +21,11 @@ An order has one or many glass products. For products you must set
 * tempered process [ Yes | No ]
 
 ### Order activation
-When an order was created, an asyn job process is launched using Sidekiq and Redis. That action creates the tracking objects in database, depending on the attributes for each product (holes, polish type and temper process).  
+When an order is created, an asyn job process is launched using Sidekiq and Redis. That action creates the tracking objects in database, depending on the attributes for each product (holes, polish type and temper process).
+All products must be processed at Cut and Delivery stages.
+
+
+
 The process performs some fake process too, like external API calls and email delivery. Randomly they can fail to simulate real world conditions where things fails.  
 If a fake service raise an exception, the whole Order activation process will be rolledback because it is wrapped in a transaction. So, if an activation fails, you can retry the activation in the In Progress view.
 
