@@ -21,9 +21,14 @@ An order has one or many glass products. For products you must set
 * tempered process [ Yes | No ]
 
 ### Order activation
-When an order is created, an asyn job process is launched using Sidekiq and Redis. That action creates the tracking objects in database, depending on the attributes for each product (holes, polish type and temper process).
+When an order is created, an asyn job process is launched using Sidekiq and Redis.  
+![Order Status](order_status.png)
+
+That action creates the tracking objects in database, depending on the attributes for each product (holes, polish type and temper process).
+
 All products must be processed at Cut and Delivery stages.
 
+![Stages Flow](flow_stages.png)
 
 
 The process performs some fake process too, like external API calls and email delivery. Randomly they can fail to simulate real world conditions where things fails.  
