@@ -1,14 +1,11 @@
 class StagesController < ApplicationController
   before_action :set_stage, only: [:show, :edit, :update, :destroy]
   
-  before_action except: [:show, :index] do 
-    authorize(current_user, :manage_stages?)
-  end
-
   # GET /stages
   # GET /stages.json
   def index
     @stages = Stage.all
+    authorize @stages
   end
 
   # GET /stages/1
@@ -27,6 +24,7 @@ class StagesController < ApplicationController
   # GET /stages/new
   def new
     @stage = Stage.new
+    authorize @stage
   end
 
   # GET /stages/1/edit
@@ -37,6 +35,8 @@ class StagesController < ApplicationController
   # POST /stages.json
   def create
     @stage = Stage.new(stage_params)
+
+    authorize @stage
 
     respond_to do |format|
       if @stage.save

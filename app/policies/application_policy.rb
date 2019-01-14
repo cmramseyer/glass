@@ -34,6 +34,7 @@ class ApplicationPolicy
     false
   end
 
+
   class Scope
     attr_reader :user, :scope
 
@@ -45,5 +46,6 @@ class ApplicationPolicy
     def resolve
       scope.all
     end
+    
   end
 end

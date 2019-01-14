@@ -7,6 +7,8 @@ class ApplicationController < ActionController::Base
 
   # rescue_from Error::OrderActivation, with: :order_activation_fail 
 
+  rescue_from Pundit::NotAuthorizedError, with: :not_authorized
+
   def success_response(message)
     render file: '/general/success_notification', locals: { message: message.squish }, head: :ok
   end
@@ -21,5 +23,10 @@ class ApplicationController < ActionController::Base
     message = "Unexpected error: #{exception.message}".squish
     puts message
     render file: '/general/error_notification', locals: { message: message }, head: '500'
+  end
+
+  def not_authorized(exception)
+    flash[:alert] = "Not authorized"
+    redirect_to orders_path
   end
 end
