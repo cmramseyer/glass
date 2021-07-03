@@ -51,21 +51,10 @@ module Report
     end
 
     def create_pdf_and_set_config
-      margin_str = @params.fetch(:margin, "Normal").to_s_constant
-      page_size_str = @params.fetch(:page_size, "A4").to_s_constant
-
-      margin = "Report::Margin::#{margin_str}".constantize
-      page_size = "Report::PageSize::#{page_size_str}".constantize
-
-      self.class.include margin
-      self.class.include page_size
-      
-      # self.margin and self.page_size calls included methods
-      # for selected Margin and PageSize modules
-      config = self.margin.merge! self.page_size
-
-      @pdf = Prawn::Document.new(config)
-
+      margin_symbol = @params.fetch(:margin, "normal").downcase.to_sym
+      margin = Report::Base::MARGIN[margin_symbol]
+      page_size = @params.fetch(:page_size, "A4").upcase
+      @pdf = Prawn::Document.new(margin: margin, page_size: page_size)
     end
 
   end
