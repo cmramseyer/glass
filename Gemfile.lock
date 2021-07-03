@@ -445,7 +445,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   pdf-inspector
-  pg
+  pg (~> 0.20)
   prawn
   prawn-print
   prawn-table
