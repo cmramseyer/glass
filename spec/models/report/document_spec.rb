@@ -26,8 +26,6 @@ RSpec.describe Report::Document, type: :model do
       expect(report.class.ancestors).to include(Report::Header::Simple)
       expect(report.class.ancestors).to include(Report::Body::Simple)
       expect(report.class.ancestors).to include(Report::Footer::Simple)
-      expect(report.class.ancestors).to include(Report::Margin::Normal)
-      expect(report.class.ancestors).to include(Report::PageSize::A4)
     end
 
     it 'filename' do

@@ -1,6 +1,8 @@
 module Report
   class Base
 
+    include ReportSettings
+
     # each Report implements its own header, body and footer
     def draw
       draw_header
