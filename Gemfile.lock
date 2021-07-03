@@ -445,7 +445,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   pdf-inspector
-  pg (~> 0.18)
+  pg
   prawn
   prawn-print
   prawn-table
@@ -474,4 +474,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.12.5
+   1.17.3
