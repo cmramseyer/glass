@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20181218145143) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "activities", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",  null: false
@@ -114,7 +117,7 @@ ActiveRecord::Schema.define(version: 20181218145143) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin",               default: false
-    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
   create_table "work_logs", force: :cascade do |t|
