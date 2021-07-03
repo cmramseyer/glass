@@ -1,31 +1,57 @@
 class Stage < ApplicationRecord
 
-  def self.symbols
-    all.map(&:name).map { |sym| sym.to_s.parameterize(separator: "_") }
+  CUT = 'Cut'.freeze
+  DRILL = 'Drill'.freeze
+  POLISH = 'Polish'.freeze
+  TEMPER = 'Temper'.freeze
+  DELIVERY = 'Delivery'.freeze
+
+  def cut?
+    name == CUT
   end
 
-  def self.delivery
-    @delivery ||= Stage.find_by_name('Delivery') || Stage.create(name: "Delivery")
+  def drill?
+    name == DRILL
+  end
+
+  def polish?
+    name == POLISH
+  end
+
+  def temper?
+    name == TEMPER
+  end
+
+  def delivery?
+    name == DELIVERY
+  end
+
+  def self.symbols
+    all.map(&:name).map { |sym| sym.to_s.parameterize(separator: "_") }
   end
 
   def self.stages_for_inject_cut
     [self.drill, self.polish, self.temper, self.delivery]
   end
 
+  def self.delivery
+    @delivery ||= Stage.find_by_name('Delivery')
+  end
+
   def self.temper
-    @temper ||= Stage.find_by_name("Temper") || Stage.create(name: "Temper")
+    @temper ||= Stage.find_by_name("Temper")
   end
 
   def self.polish
-    @polish ||= Stage.find_by_name("Polish") || Stage.create(name: "Polish")
+    @polish ||= Stage.find_by_name("Polish")
   end
 
   def self.drill
-    @drill ||= Stage.find_by_name("Drill") || Stage.create(name: "Drill")
+    @drill ||= Stage.find_by_name("Drill")
   end
 
   def self.cut
-    @cut ||= Stage.find_by_name("Cut") || Stage.create(name: "Cut")
+    @cut ||= Stage.find_by_name("Cut")
   end
 
   def icon_name
