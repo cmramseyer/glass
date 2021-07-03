@@ -34,13 +34,13 @@ RSpec.describe OrdersController, type: :controller do
     
     context 'with a valid Order created' do
 
+      let(:product) { create :product }
+      let(:polish) { create :polish_type }
+
       before(:each) do
-        product = products(:fl4cle)
-        polish = polish_types(:polish_none)
         @order_params = {:customer=>"Charlie", :description=>"New Office", :delivery_address=>"Mendoza 2138", :priority=>"2 - Normal", :status=>'created', product_lines_attributes: [id: nil, product_id: product.id, holes_quantity: 1, polish_type_id: polish.id, tempered: true, quantity: 1, description: "Window 1", width: 555, height: 666]}
       end
-      
-      
+
       it "redirect_to order_path(order)" do
         post :create, params: { order: @order_params }
         expect(response).to redirect_to(assigns(:order))
@@ -59,10 +59,10 @@ RSpec.describe OrdersController, type: :controller do
 
 
     context 'with a valid Order with nested product_lines created' do
-      
+      let(:product) { create :product }
+      let(:polish) { create :polish_type }
+
       before(:each) do
-        product = products(:fl4cle)
-        polish = polish_types(:polish_none)
         @order_params = {:customer=>"Charlie", :description=>"New Office", :delivery_address=>"Mendoza 2138", :priority=>"2 - Normal", :status=>'created', product_lines_attributes: [{id: nil, product_id: product.id, holes_quantity: 1, polish_type_id: polish.id, tempered: true, quantity: 1, description: "Window 1", width: 555, height: 666}, {id: nil, product_id: product.id, holes_quantity: 2, polish_type_id: polish.id, tempered: true, quantity: 1, description: "Window 2", width: 777, height: 888}]}
       end
       
