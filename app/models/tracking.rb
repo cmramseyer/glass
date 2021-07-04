@@ -47,6 +47,7 @@ class Tracking < ApplicationRecord
   # delegate to stage
   delegate :name, to: :stage, prefix: true, allow_nil: false
   delegate :workload, to: :stage, prefix: true, allow_nil: false
+  delegate :cut?, :drill?, :polish?, :temper?, :delivery?, to: :stage, prefix: false, allow_nil: false
 
   # are there works done in the previous stage and ready to be
   # drilled/polished/tempered/delivered?
@@ -98,25 +99,4 @@ class Tracking < ApplicationRecord
   def unit_workload
     stage_workload * product_line_unit_area
   end
-
-  def cut?
-    stage == Stage.cut
-  end
-
-  def drill?
-    stage == Stage.drill
-  end
-
-  def polish?
-    stage == Stage.polish
-  end
-
-  def temper?
-    stage == Stage.temper
-  end
-
-  def delivery?
-    stage == Stage.delivery
-  end
-
 end

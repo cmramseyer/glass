@@ -1,7 +1,0 @@
-cut_001:
-  program: program_001
-  order: order_cutted
-  width: 1000
-  height: 1000
-  tracking: track_101
-  quantity: 5
