@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Zebra::Replacer, type: :model do
-  
-  let(:product_line) { create :product_line }
+
+  let!(:order) { create :order, product_lines: [product_line] }
+  let(:product_line) { build :product_line }
   let(:data) { Zebra::Data::ProductLine.new(product_line)}
 
   context 'when text with correct marks and variables' do
