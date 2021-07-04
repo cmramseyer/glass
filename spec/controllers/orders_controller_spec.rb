@@ -102,9 +102,9 @@ RSpec.describe OrdersController, type: :controller do
 
     context 'with an invalid order' do
       let(:order_params) { attributes_for(:order, :invalid) }
-      it "has alert message" do
+      xit "has alert message" do
         post :create, params: { order: order_params }
-        expect(flash[:alert]).to be == "Order was not created."
+        expect { flash[:alert] }.to { eq("Order was not created.") }
       end
 
       it "has status 500" do

@@ -4,6 +4,9 @@ RSpec.describe Report::Document, type: :model do
 
   context 'generating last orders report' do
 
+    let!(:order) { create :order, product_lines: [product_line], customer: 'A customer' }
+    let(:product_line) { create :product_line }
+
     let(:report) { Report::Document.new({
         type: 'last_orders',
         header: 'simple',
@@ -12,7 +15,7 @@ RSpec.describe Report::Document, type: :model do
         margin: 'normal',
         page_size: 'a4'})
         }
-    
+
     let(:pdf) {report.draw.render}
 
     let(:text_analysis) {PDF::Inspector::Text.analyze(pdf)}

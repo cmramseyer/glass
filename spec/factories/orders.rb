@@ -4,7 +4,7 @@ FactoryBot.define do
     description {"New Office"}
     delivery_address {"Mendoza 2138"}
     priority {'2 - Normal'}
-    status { 0 }
+    status { 'created' }
     trait :invalid do
       customer {""}
     end
