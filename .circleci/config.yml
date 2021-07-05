@@ -58,3 +58,8 @@ jobs:
                             $TEST_FILES
       # Security analysis
       # - run: bundle exec brakeman
+
+workflows:
+  build-and-deploy:
+    jobs:
+      - build
