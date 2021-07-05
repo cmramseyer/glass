@@ -23,6 +23,9 @@ jobs:
           POSTGRES_DB: glass_test
           POSTGRES_PASSWORD: ""
     steps:
+      - run:
+          name: Check Env Vars
+          command: echo $DOCKERHUB_USERNAME && echo $DOCKERHUB_PASSWORD
       - checkout
       # Download and cache dependencies
       - restore_cache:
