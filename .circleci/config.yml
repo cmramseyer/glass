@@ -16,7 +16,7 @@ jobs:
       - image: circleci/postgres:9.6
         environment:
           POSTGRES_HOST_AUTH_METHOD: trust
-          POSTGRES_USER: ubuntu
+          POSTGRES_USER: postgres
           POSTGRES_DB: glass_test
           POSTGRES_PASSWORD: ""
     steps:
