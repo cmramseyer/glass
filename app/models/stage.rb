@@ -1,5 +1,7 @@
 class Stage < ApplicationRecord
 
+  validates :workload, presence: true
+
   CUT = 'Cut'.freeze
   DRILL = 'Drill'.freeze
   POLISH = 'Polish'.freeze
