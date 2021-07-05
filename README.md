@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/cmramseyer/glass/tree/development.svg?style=svg)](https://circleci.com/gh/cmramseyer/glass/tree/development)
+
 # Readme
 
 This readme is in progress and is updated day by day.
