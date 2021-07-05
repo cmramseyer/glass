@@ -83,9 +83,7 @@ group :test do
   gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'shoulda-matchers'
-
-  
-
+  gem 'rspec_junit_formatter'
 
 end
 
