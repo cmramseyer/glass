@@ -29,7 +29,7 @@ jobs:
           keys:
             - v2-gemfile-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
             - v2-gemfile-{{ arch }}-{{ .Branch }}
-            - v2-gemfile-{{ arch }}-
+            - v2-gemfile-{{ arch }}
       - run:
           name: Listing gems
           command: gem list
