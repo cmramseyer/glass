@@ -53,7 +53,6 @@ gem 'sidekiq'
 
 gem 'rubocop', require: false
 
-
 gem 'virtus'
 
 gem 'cocoon'
@@ -98,21 +97,6 @@ end
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rubocop'
-
-  gem 'capistrano', '~> 3.11.0'
-  gem 'capistrano-rvm' #, github: "capistrano/rvm"
-
-  gem 'capistrano-bundler',   '~> 1.1.3'
-  gem 'capistrano-rails',     '~> 1.1.7'
-  # Add this if you're using rbenv
-  # gem 'capistrano-rbenv', github: "capistrano/rbenv"
-
-
-  gem 'rvm-capistrano'
-
-  gem 'capistrano3-unicorn'
-
-  gem 'seed_dump'
 
 end
 
