@@ -6,10 +6,6 @@ require File.expand_path('../../config/environment', __FILE__)
 abort("The Rails environment is running in production mode!") if Rails.env.production?
 require 'rspec/rails'
 
-# "action_cable/testing/rspec" loads after require enviroment
-require "action_cable/testing/rspec"
-
-
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -39,6 +35,7 @@ RSpec.configure do |config|
 
   config.include Devise::Test::ControllerHelpers, type: :controller
   config.include Warden::Test::Helpers
+  config.include ActionCable::TestHelper
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
