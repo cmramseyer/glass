@@ -27,9 +27,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v2-gemfile-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
-            - v2-gemfile-{{ arch }}-{{ .Branch }}
-            - v2-gemfile-{{ arch }}
+            - v3-gemfile-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - v3-gemfile-{{ arch }}-{{ .Branch }}
+            - v3-gemfile-{{ arch }}
       - run:
           name: Listing gems
           command: gem list
@@ -37,7 +37,7 @@ jobs:
           name: install dependencies
           command: bundle install
       - save_cache:
-          key: v2-gemfile-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          key: v3-gemfile-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
       - run:
