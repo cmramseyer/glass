@@ -246,7 +246,8 @@ GEM
       coderay (~> 1.1)
       method_source (~> 1.0)
     public_suffix (4.0.6)
-    puma (3.12.6)
+    puma (5.3.2)
+      nio4r (~> 2.0)
     pundit (2.1.0)
       activesupport (>= 3.0.0)
     racc (1.5.2)
@@ -431,7 +432,7 @@ DEPENDENCIES
   prawn
   prawn-print
   prawn-table
-  puma (~> 3.0)
+  puma (~> 5.3)
   pundit
   rails (~> 5.2.6)
   rails-controller-testing
