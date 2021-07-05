@@ -3,6 +3,9 @@ jobs:
   build:
     docker:
       - image: cimg/2.6.1-browsers
+        auth:
+          username: $DOCKERHUB_USERNAME
+          password: $DOCKERHUB_PASSWORD
         environment:
           RAILS_ENV: test
           PG_TEST_HOST: localhost
