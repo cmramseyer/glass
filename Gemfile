@@ -8,11 +8,9 @@ end
 gem 'dotenv-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.0.2'
-# Use sqlite3 as the database for Development/Test enviroments
-gem 'sqlite3'
-# Use postgresql for Production
-gem 'pg', '~> 0.20'
+gem 'rails', '~> 5.2.6'
+
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -54,7 +52,6 @@ gem 'redis-namespace'
 gem 'sidekiq'
 
 gem 'rubocop', require: false
-
 
 gem 'virtus'
 
@@ -100,21 +97,6 @@ end
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rubocop'
-
-  gem 'capistrano', '~> 3.11.0'
-  gem 'capistrano-rvm' #, github: "capistrano/rvm"
-
-  gem 'capistrano-bundler',   '~> 1.1.3'
-  gem 'capistrano-rails',     '~> 1.1.7'
-  # Add this if you're using rbenv
-  # gem 'capistrano-rbenv', github: "capistrano/rbenv"
-
-
-  gem 'rvm-capistrano'
-
-  gem 'capistrano3-unicorn'
-
-  gem 'seed_dump'
 
 end
 

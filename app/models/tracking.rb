@@ -9,8 +9,8 @@ class Tracking < ApplicationRecord
   belongs_to :stage
 
   # each tracking points to the next tracking register
-  belongs_to :next_tracking, class_name: Tracking, optional: true, autosave: true
-  belongs_to :prev_tracking, class_name: Tracking, optional: true, autosave: true
+  belongs_to :next_tracking, class_name: 'Tracking', optional: true, autosave: true
+  belongs_to :prev_tracking, class_name: 'Tracking', optional: true, autosave: true
 
   has_many :cuts
 

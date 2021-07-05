@@ -17,3 +17,10 @@ Product.create!([
   {id: 5, name: "Low-E 4mm", code: "LOWE4", thickness: 4, max_width: 3600, max_height: 3600, price_per_m2: 32.0, created_at: "2018-11-01 22:03:34", updated_at: "2018-11-01 22:03:34"},
   {id: 6, name: "Solar-E 6mm", code: "SOLE6", thickness: 6, max_width: 2500, max_height: 2500, price_per_m2: 42.0, created_at: "2018-11-01 22:08:51", updated_at: "2018-11-01 22:08:51"}
 ])
+
+Stage.create!([
+  {id: 1, name: "Cut", workload: 1},
+  {id: 2, name: "Drill", workload: 0.5},
+  {id: 3, name: "Polish", workload: 0.25},
+  {id: 4, name: "Temper", workload: 2},
+  {id: 5, name: "Delivery", workload: 1.5}])
