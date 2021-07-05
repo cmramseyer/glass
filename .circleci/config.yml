@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: ruby:2.3.1
+      - image: circleci/2.3-stretch-node-browsers-legacy
         environment:
           RAILS_ENV: test
           PG_TEST_HOST: localhost
