@@ -58,6 +58,7 @@ module Utility
       line = @text_split[0]
       # [0] here, but 1st line in textarea user input
       raise Error::CutMachineProgram.new "Line 1 must be PROGRAM=" unless line.starts_with? "PROGRAM="
+
       match = line.match(/PROGRAM=(.*$)/)
       @program_name = match[1]
     end
@@ -66,6 +67,7 @@ module Utility
       line = @text_split[1]
       # [1] here, but 2nd line in textarea user input
       raise Error::CutMachineProgram.new "Line 2 must be PRODUCT_CODE=" unless line.starts_with? "PRODUCT_CODE="
+
       match = line.match(/PRODUCT_CODE=(.*$)/)
       @product_code = match[1]
     end

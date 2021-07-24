@@ -56,10 +56,10 @@ RSpec.describe OrdersController, type: :controller do
       expect(response).to render_template('orders/new')
     end
     
-   it "assigns the order" do
-     get :new
-     expect(assigns(:order)).to be_a_new(Order)
-   end
+    it "assigns the order" do
+      get :new
+      expect(assigns(:order)).to be_a_new(Order)
+    end
   end
 
   describe "POST #create" do

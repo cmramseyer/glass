@@ -56,13 +56,13 @@ class TrackingsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tracking
-      @tracking = Tracking.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tracking
+    @tracking = Tracking.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def tracking_params
-      params.require(:tracking).permit(:product_line_id, :stage_id, :done, :next_tracking_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def tracking_params
+    params.require(:tracking).permit(:product_line_id, :stage_id, :done, :next_tracking_id)
+  end
 end

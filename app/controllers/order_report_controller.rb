@@ -11,7 +11,7 @@ class OrderReportController < ApplicationController
       body: "Simple",
       footer: "Generated info",
       margin: "Normal",
-      page_size: "A4"})
+      page_size: "A4" })
 
     report.draw
 

@@ -39,12 +39,12 @@ module Form
       ::Order.model_name
     end
 
-    #def product_lines_attributes=(attributes)
+    # def product_lines_attributes=(attributes)
     #  @product_lines ||= []
     #  attributes.each do |i, product_lines_params|
     #    @product_lines_params.push(ProductLine.new(product_lines_params))
     #  end
-    #end
+    # end
 
     def build_product_lines
       ::ProductLine.new

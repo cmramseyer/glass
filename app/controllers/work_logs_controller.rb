@@ -62,13 +62,13 @@ class WorkLogsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_work_log
-      @work_log = WorkLog.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_work_log
+    @work_log = WorkLog.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def work_log_params
-      params.require(:work_log).permit(:tracking_id, :user_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def work_log_params
+    params.require(:work_log).permit(:tracking_id, :user_id)
+  end
 end
