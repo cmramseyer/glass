@@ -1,11 +1,15 @@
 module Utility
   class TrackingGenerator
-    attr_reader :tracking_created
+    attr_reader :trackings_created
 
     def initialize(order)
       @order = order
       @product_lines = @order.product_lines
-      @tracking_created = []
+      @trackings_created = []
+    end
+
+    def persist!
+      trackings_created.map(&:save!)
     end
 
     def run
@@ -28,7 +32,7 @@ module Utility
 
         # im gonna store it and perform save! method outside
         # so i can test easily the this class
-        @tracking_created << cut
+        trackings_created << cut
       end
       self
     end

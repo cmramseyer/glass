@@ -26,7 +26,6 @@ class Tracking < ApplicationRecord
   # prev_tracking must be present unless the track is a delivery
   validates :prev_tracking, presence: true, unless: -> {stage.name == "Cut"}
 
-
   # END VALIDATIONS
 
   # delegate to product_line
@@ -85,10 +84,10 @@ class Tracking < ApplicationRecord
 
   def perform(quantity_done = WORKSDONE)
     raise Error::UnavailableWorks.new unless available_works?
+
     raise Error::UnavailableWorks.new unless allow_perform(quantity_done)
-    
+
     current_done = done
-    
     update_attribute :done, current_done + quantity_done
   end
 
@@ -98,5 +97,20 @@ class Tracking < ApplicationRecord
 
   def unit_workload
     stage_workload * product_line_unit_area
+  end
+
+  # utility method for testing
+  # for a tracking object, returns an array with all the following steps
+  # cut.tracking_full_path #=> [:cut, :drill, :polish, :delivery]
+  def tracking_full_path
+    full_path = []
+    current_track = self
+    loop do
+      full_path << current_track.stage_name.downcase.to_sym
+      break unless current_track.next_tracking
+
+      current_track = current_track.next_tracking
+    end
+    full_path
   end
 end

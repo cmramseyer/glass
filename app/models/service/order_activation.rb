@@ -12,7 +12,7 @@ module Service
         @order.reload
         # create the tracking
         tracking_service = Utility::TrackingGenerator.new(order).run
-        tracking_service.tracking_created.map(&:save!)
+        tracking_service.persist!
         ##########################
         # FAKE SERVICES THAT RANDOMLY FAIL!!!
         # SEE AT THE END OF THE CURRENT FILE

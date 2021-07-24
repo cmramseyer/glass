@@ -13,7 +13,7 @@ module Report
 
       type = params.fetch(:type, "Last orders").to_s_constant
 
-      @data = "Report::Type::#{type}".constantize.new(@obj)
+      @data = "Report::Type::#{type}".constantize.new
 
       # get filename from each @data report type
       @filename = @data.filename
