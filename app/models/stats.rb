@@ -15,6 +15,22 @@ module Stats
     stats
   end
 
+  def self.historical_weight_per_product
+    stats = []
+
+    Product.all.each do |product|
+      ostruct = OpenStruct.new(name: product.name, value: 0.0)
+
+      product.product_lines.each do |product_line|
+        ostruct.value += product_line.total_weight
+      end
+
+      stats << ostruct
+    end
+
+    stats
+  end
+
   def self.last_two_weeks_workload_per_stage
     stats = []
 
@@ -39,6 +55,6 @@ module Stats
     days.map!(&:only_month_day)
 
     OpenStruct.new(days: days, stats: stats)
-    
+
   end
 end

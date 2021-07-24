@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_145143) do
+ActiveRecord::Schema.define(version: 2021_07_24_180258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,4 +128,14 @@ ActiveRecord::Schema.define(version: 2018_12_18_145143) do
     t.integer "quantity"
   end
 
+
+  create_view "historical_surface_and_weight_mvw", materialized: true, sql_definition: <<-SQL
+      SELECT p.name,
+      p.code,
+      round(sum(((((pl.quantity * pl.width) * pl.height))::numeric / (1000000)::numeric)), 2) AS total_area,
+      round(sum(((((((pl.quantity * pl.width) * pl.height) * p.thickness))::numeric * 2.5) / (1000000)::numeric)), 2) AS total_weight
+     FROM (products p
+       LEFT JOIN product_lines pl ON ((p.id = pl.product_id)))
+    GROUP BY p.name, p.code;
+  SQL
 end

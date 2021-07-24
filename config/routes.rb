@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resources :perform_work, only: [:create]
   end
   resources :stats
+  resources :mat_view_stats
   resources :product_lines do
     resources :zebra_default_label, only: [:index]
     resources :zebra_alternative_label, only: [:index]
