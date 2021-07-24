@@ -1,6 +1,5 @@
 module Zebra
   class Label
-
     # so url method from LabelaryApi can access to read @zpl_fina_code
     attr_reader :zpl_final_code
 
@@ -18,14 +17,11 @@ module Zebra
     end
 
     def generate
-
       # get data_hash from below
       # get zpl_format from config module extended
       # generates the final zpl replacing data_object values in zpl_format
-
       @zpl_final_code = Zebra::Replacer.new(@data_object, @zpl_format).zpl
       self
     end
-    
   end
 end

@@ -1,6 +1,5 @@
 module Utility
   class SaveProgram
-
     def initialize(program_name, product, tracking_cuts, user)
       @program_name = program_name
       @product = product
@@ -25,9 +24,7 @@ module Utility
     end
 
     def save_cuts_and_program
-
       @tracking_cuts.each do |tracking_cut|
-
         Cut.create!(
           program: @program,
           order: tracking_cut.tracking.product_line_order,
@@ -37,10 +34,7 @@ module Utility
           tracking: tracking_cut.tracking
         )
       end
-
       @program.save!
     end
-
-
   end
 end

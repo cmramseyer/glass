@@ -1,14 +1,14 @@
 class ProductLine < ApplicationRecord
   belongs_to :product, class_name: 'Product'
-  belongs_to :order, optional:  true
+  belongs_to :order, optional: true
   belongs_to :polish_type
 
   has_many :trackings
 
   validates :quantity, presence: true, numericality: { greater_than: 0, less_than: 99999 }
-  validates :width, presence: true, numericality: { greater_than: 100, less_than: 3600}
-  validates :height, presence: true, numericality: { greater_than: 100, less_than: 3600}
-  validates :holes_quantity, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 100}
+  validates :width, presence: true, numericality: { greater_than: 100, less_than: 3600 }
+  validates :height, presence: true, numericality: { greater_than: 100, less_than: 3600 }
+  validates :holes_quantity, presence: true, numericality: { greater_than_or_equal_to: 0, less_than: 100 }
 
   # delegate to product
   delegate :name, to: :product, prefix: true, allow_nil: false
@@ -32,8 +32,6 @@ class ProductLine < ApplicationRecord
     (width.to_f * height.to_f / 1000000.0).round(2)
   end
 
-
-
   # weight in Kgs
   # 2.5 is a constant
   def unit_weight
@@ -51,7 +49,6 @@ class ProductLine < ApplicationRecord
   def amount
     total_area * product_price_per_m2
   end
-
   
   # ORDER = five digits order number filled with leading zero
   # CARDINALITY = three digits cardinality of the product_line in the order

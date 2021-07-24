@@ -13,6 +13,5 @@ module Handler
       puts e.backtrace
       raise e
     end
-      
   end
 end

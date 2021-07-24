@@ -26,4 +26,3 @@ module Notify
   end
   
 end
-

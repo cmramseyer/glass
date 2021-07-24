@@ -43,7 +43,6 @@ class OrderStage
     @trackings.any?
   end
 
-
   def total_m2
     total = 0.0
     @trackings.each do |tracking|

@@ -1,6 +1,6 @@
 module Error
   class OrderAlreadyActive < Error::OrderActivation
-    
+
     attr_accessor :order
 
     def initialize(order)
@@ -8,7 +8,7 @@ module Error
     end
 
     def message
-      "The order is already active!"
+      'The order is already active!'
     end
   end
 end

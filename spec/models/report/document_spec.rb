@@ -7,14 +7,18 @@ RSpec.describe Report::Document, type: :model do
     let!(:order) { create :order, product_lines: [product_line], customer: 'A customer' }
     let(:product_line) { create :product_line }
 
-    let(:report) { Report::Document.new({
-        type: 'last_orders',
-        header: 'simple',
-        body: 'simple',
-        footer: 'simple',
-        margin: 'normal',
-        page_size: 'a4'})
+    let(:report) do
+      Report::Document.new(
+        {
+          type: 'last_orders',
+          header: 'simple',
+          body: 'simple',
+          footer: 'simple',
+          margin: 'normal',
+          page_size: 'a4'
         }
+      )
+    end
 
     let(:pdf) {report.draw.render}
 

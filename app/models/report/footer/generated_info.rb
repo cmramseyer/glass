@@ -1,11 +1,9 @@
 module Report
   module Footer
     module GeneratedInfo
-
       FOOTER_HEIGHT = 30
 
       def draw_footer
-
         @pdf.bounding_box([@pdf.bounds.left, @pdf.bounds.bottom + FOOTER_HEIGHT], width: @pdf.bounds.width) do
 
           @absolute_top_footer = @pdf.bounds.absolute_top
@@ -15,9 +13,7 @@ module Report
           end
 
           @pdf.stroke_bounds
-
         end
-
       end
     end
   end

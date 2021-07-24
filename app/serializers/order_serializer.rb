@@ -13,7 +13,7 @@ class OrderSerializer < ActiveModel::Serializer
     
     stats = HashWithIndifferentAccess.new
     [cut, drill, polish, temper, delivery].each do |order_stage|
-      stats[order_stage.stage_name] = {percentage: order_stage.done_m2, link: order_stage_path(object, order_stage.stage)} if order_stage.has_trackings?
+      stats[order_stage.stage_name] = { percentage: order_stage.done_m2, link: order_stage_path(object, order_stage.stage) } if order_stage.has_trackings?
     end
     
     stats

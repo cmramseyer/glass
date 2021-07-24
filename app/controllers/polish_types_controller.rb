@@ -62,13 +62,13 @@ class PolishTypesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_polish_type
-      @polish_type = PolishType.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_polish_type
+    @polish_type = PolishType.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def polish_type_params
-      params.require(:polish_type).permit(:name)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def polish_type_params
+    params.require(:polish_type).permit(:name)
+  end
 end

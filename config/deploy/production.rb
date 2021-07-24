@@ -6,4 +6,3 @@ role :db,  %W{#{ENV['USER_HOST']}}
 
 
 server ENV['HOST'], user: ENV['DEPLOY_USER'], roles: %W{web app}, port: 8585
-

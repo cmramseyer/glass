@@ -2,7 +2,7 @@ module Report
   module Type
     class LastOrders
 
-      def initialize(no_data = nil)
+      def initialize
         @orders = ::Order.last(10)
       end
 
@@ -50,20 +50,54 @@ module Report
         @orders.sum(&:amount)
       end
 
-      def order_legend; "Order No." end
-      def created_at_legend; "Created date" end
-      def customer_legend; "Customer" end
-      def priority_legend; "Priority" end
-      def total_products_legend; "Pieces" end
-      def amount_legend; "$" end
+      def order_legend
+        "Order No."
+      end
+
+      def created_at_legend
+        "Created date"
+      end
+
+      def customer_legend
+        "Customer"
+      end
+
+      def priority_legend
+        "Priority"
+      end
+
+      def total_products_legend
+        "Pieces"
+      end
+
+      def amount_legend
+        "$"
+      end
 
       # sum(&:width) must be 1 for 100% with table
-      def order_width; 0.1 end
-      def created_at_width; 0.2 end
-      def customer_width; 0.3 end
-      def priority_width; 0.2 end
-      def total_products_width; 0.1 end
-      def amount_width; 0.1 end
+      def order_width
+        0.1
+      end
+
+      def created_at_width
+        0.2
+      end
+
+      def customer_width
+        0.3
+      end
+
+      def priority_width
+        0.2
+      end
+
+      def total_products_width
+        0.1
+      end
+
+      def amount_width
+        0.1
+      end
 
       def order_value(order)
         order.id.to_s
@@ -88,7 +122,6 @@ module Report
       def amount_value(order)
         order.amount
       end
-
     end
   end
 end

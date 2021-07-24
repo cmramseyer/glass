@@ -1,4 +1,3 @@
-
 # Set the working application directory
 # working_directory "/path/to/your/app"
 

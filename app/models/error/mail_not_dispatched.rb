@@ -1,6 +1,5 @@
 module Error
   class MailNotDispatched < Error::OrderActivation
-
     attr_accessor :order
 
     def initialize(order)
@@ -8,7 +7,7 @@ module Error
     end
 
     def message
-      "The mail could not be sent. Please, retry later"
+      'The mail could not be sent. Please, retry later'
     end
   end
 end

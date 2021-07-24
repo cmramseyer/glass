@@ -11,7 +11,7 @@ class InvoiceReportController < ApplicationController
       body: 'Simple',
       footer: 'Simple',
       margin: 'Normal',
-      page_size: 'A4'})
+      page_size: 'A4' })
     
     report.draw
 

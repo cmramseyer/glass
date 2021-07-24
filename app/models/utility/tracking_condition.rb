@@ -1,6 +1,5 @@
 module Utility
   module TrackingCondition
-
     def self.for_drill(product_line)
       product_line.holes_quantity.to_i.positive?
     end
@@ -13,9 +12,8 @@ module Utility
       product_line.tempered
     end
 
-    def self.for_delivery(product_line)
+    def self.for_delivery(_)
       true
     end
-    
   end
 end

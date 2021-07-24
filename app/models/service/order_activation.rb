@@ -1,6 +1,5 @@
 module Service
   class OrderActivation < Service::Base
-
     attr_accessor :order, :result
 
     def initialize(order, user)
@@ -9,15 +8,11 @@ module Service
     end
 
     def run
-
       handle_service do
-
         @order.reload
-
         # create the tracking
         tracking_service = Utility::TrackingGenerator.new(order).run
         tracking_service.tracking_created.map(&:save!)
-
         ##########################
         # FAKE SERVICES THAT RANDOMLY FAIL!!!
         # SEE AT THE END OF THE CURRENT FILE
@@ -30,20 +25,18 @@ module Service
         ######################################
         @order.activate!
         @order.save!
-
         # create an activity register for the order activation
         Activity.new_activity(@user, :activated, @order, nil)
-
 
         # This is an async process, better notify results
         # of execution with ActionCable
         Notify.activation_success(@order)
       end
 
-    rescue StandardError => exception
+    rescue StandardError => e
       # This is an async process, better notify results
       # of execution with ActionCable
-      Notify.activation_fail(@order, exception)
+      Notify.activation_fail(@order, e)
 
     rescue Exception
       # This is an async process, better notify results
@@ -52,7 +45,7 @@ module Service
     end
 
     private
-    
+
     def send_mail(order)
       # Faking a mail delivery service
       # that sometimes goes wrong
@@ -66,6 +59,5 @@ module Service
       # Service::ResupplyProducts.new(@order).run
       raise Error::ProviderApiServerDown.new(order) if Random.rand(10) > 8
     end
-
   end
 end

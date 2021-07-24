@@ -13,14 +13,6 @@ set :rvm_ruby_version, '2.3.1@glass'
 set :application, "glass"
 set :repo_url, 'git@github.com:cmramseyer/glass.git' # ENV['REPO_URL']
 
-#set :scm, :git
-
-#set :ssh_options, forward_agent: true
-# set :scm_user, 'cmramseyer@gmail.com'
-# set :scm_password, 'ResNick85!!!GH'
-
-#set :git_https_username, 'cmramseyer@gmail.com'
-#set :git_https_password, 'ResNick85!!!GH'
 
 
 # Default branch is :master

@@ -39,12 +39,12 @@ module Form
       ::Order.model_name
     end
 
-    #def product_lines_attributes=(attributes)
+    # def product_lines_attributes=(attributes)
     #  @product_lines ||= []
     #  attributes.each do |i, product_lines_params|
     #    @product_lines_params.push(ProductLine.new(product_lines_params))
     #  end
-    #end
+    # end
 
     def build_product_lines
       ::ProductLine.new
@@ -60,11 +60,9 @@ module Form
     end
 
     def product_id
-      
     end
 
     def polish_type_id
-      
     end
 
     def persisted?
@@ -80,24 +78,15 @@ module Form
       end
     end
 
-  # private
-
     def persist!
-
-      
-
-
       @order = ::Order.new(
         customer: customer, 
         description: description, 
         delivery_address: delivery_address, 
-        priority: priority)
-
-      
+        priority: priority
+      )
       @order.product_lines = product_lines
-
       @order.save!
     end
-
   end
 end

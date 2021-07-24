@@ -66,4 +66,3 @@ RSpec.configure do |config|
 end
 
 RSPEC_ROOT = File.dirname(__FILE__)
-

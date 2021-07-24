@@ -3,15 +3,15 @@ require 'rails_helper'
 RSpec.describe Order, type: :model do
 
   let(:order) { create :order, product_lines: product_lines }
-  let(:product_lines) { [product_line_1, product_line_2] }
-  let(:product_line_1) { create :product_line, quantity: quantity, width: width, height: height }
-  let(:product_line_2) { create :product_line, quantity: quantity_2, width: width_2, height: height_2 }
+  let(:product_lines) { [product_line1, product_line2] }
+  let(:product_line1) { create :product_line, quantity: quantity, width: width, height: height }
+  let(:product_line2) { create :product_line, quantity: quantity2, width: width2, height: height2 }
   let(:quantity) { 1 }
   let(:width) { 600 }
   let(:height) { 600 }
-  let(:quantity_2) { 3 }
-  let(:width_2) { 900 }
-  let(:height_2) { 900 }
+  let(:quantity2) { 3 }
+  let(:width2) { 900 }
+  let(:height2) { 900 }
 
   context 'when an order is in status created' do
     let(:status) { 'created' }
