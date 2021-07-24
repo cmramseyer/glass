@@ -47,7 +47,7 @@ module Stats
       # stats be like {cut: 10, drill: 5, ...}
       stats[stage_sym] = days.map do |day|
         # created_at: (day.beginning_of_day..day.end_of day)
-        WorkLog.where(created_at: day.to_time.all_day).select { |wl| wl.send("tracking_#{stage_sym.to_s}?") }.sum(&:workload)
+        WorkLog.where(created_at: day.to_time.all_day).select { |wl| wl.send("tracking_#{stage_sym}?") }.sum(&:workload)
       end
     end
 
