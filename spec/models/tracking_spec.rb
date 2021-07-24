@@ -1,26 +1,12 @@
 require 'rails_helper'
 
+require 'support/tracking_support'
+
 RSpec.describe Tracking, type: :model do
 
-  def create_trackings(cut_track, drill_track, temper_track, delivery_track)
-    delivery_track.prev_tracking = temper_track
+  include TrackingSupport
 
-    temper_track.next_tracking = delivery_track
-    temper_track.prev_tracking = drill_track
-    
-    drill_track.next_tracking = temper_track
-    drill_track.prev_tracking = cut_track
-
-    cut_track.next_tracking = drill_track
-
-    delivery_track.save
-    temper_track.save
-    drill_track.save
-    cut_track.save
-    { cut: cut_track, drill: drill_track, temper: temper_track, delivery: delivery_track }
-  end
-
-  let!(:trackings) { create_trackings(cut_track, drill_track, temper_track, delivery_track) }
+  let!(:trackings) { create_trackings(cut_track, drill_track, polish_track, temper_track, delivery_track) }
 
   let(:user) { create :user }
   let(:quantity) { 5 }
@@ -29,12 +15,14 @@ RSpec.describe Tracking, type: :model do
 
   let(:cut_stage) { create :stage, :cut, workload: 0.1 }
   let(:drill_stage) { create :stage, :drill, workload: 0.15 }
+  let(:polish_stage) { create :stage, :drill, workload: 0.2 }
   let(:temper_stage) { create :stage, :temper, workload: 1.5 }
   let(:delivery_stage) { create :stage, :delivery, workload: 0.3 }
   let(:cut) { create :cut, program: program }
 
   let(:delivery_track) { build :tracking, stage: delivery_stage, product_line: product_line }
   let(:temper_track) { build :tracking, stage: temper_stage, product_line: product_line }
+  let(:polish_track) { build :tracking, stage: polish_stage, product_line: product_line }
   let(:drill_track) { build :tracking, stage: drill_stage, product_line: product_line }
   let(:cut_track) { build :tracking, stage: cut_stage, product_line: product_line }
 
@@ -127,7 +115,7 @@ RSpec.describe Tracking, type: :model do
     end
 
     it '#next' do
-      expect(subject.next).to eq(trackings[:temper])
+      expect(subject.next).to eq(trackings[:polish])
     end
 
     it '#cut?' do

@@ -30,7 +30,7 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:tempered) { false }
 
     it 'generates right tracking' do
-      tracking = subject.tracking_created[0]
+      tracking = subject.trackings_created[0]
       expect(tracking.stage_name).to eq('Cut')
       expect(tracking.next_tracking.stage_name).to eq('Delivery')
     end
@@ -41,13 +41,8 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:holes_quantity) { 1 }
     let(:tempered) { false }
     it 'generates right tracking stages' do
-      tracking = subject.tracking_created[0]
-      expect(tracking.stage).to be Stage.cut
-      expect(tracking
-        .next_tracking.stage).to be Stage.drill
-      expect(tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
+      tracking = subject.trackings_created[0]
+      expect(tracking.tracking_full_path).to eq([:cut, :drill, :delivery])
     end
   end
 
@@ -58,21 +53,8 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:tempered) { false }
 
     it 'generates right tracking stages' do
-      tracking = subject.tracking_created[0]
-
-      expect(tracking.stage).to be Stage.cut
-
-      expect(tracking
-        .next_tracking.stage).to be Stage.drill
-
-      expect(tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.polish
-
-      expect(tracking
-        .next_tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
+      tracking = subject.trackings_created[0]
+      expect(tracking.tracking_full_path).to eq([:cut, :drill, :polish, :delivery])
     end
   end
 
@@ -83,27 +65,8 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:tempered) { true }
 
     it 'generates right tracking stages' do
-      tracking = subject.tracking_created[0]
-
-      expect(tracking.stage).to be Stage.cut
-
-      expect(tracking
-        .next_tracking.stage).to be Stage.drill
-
-      expect(tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.polish
-
-      expect(tracking
-        .next_tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.temper
-
-      expect(tracking
-        .next_tracking
-        .next_tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
+      tracking = subject.trackings_created[0]
+      expect(tracking.tracking_full_path).to eq([:cut, :drill, :polish, :temper, :delivery])
     end
   end
 
@@ -114,22 +77,8 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:tempered) { true }
 
     it 'generates right tracking stages' do
-      tracking = subject.tracking_created[0]
-
-      expect(tracking.stage).to be Stage.cut
-
-      expect(tracking
-        .next_tracking.stage).to be Stage.drill
-
-      expect(tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.temper
-
-      expect(tracking
-        .next_tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
-
+      tracking = subject.trackings_created[0]
+      expect(tracking.tracking_full_path).to eq([:cut, :drill, :temper, :delivery])
     end
   end
 
@@ -140,17 +89,8 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:tempered) { true }
 
     it 'generates right tracking stages' do
-      tracking = subject.tracking_created[0]
-
-      expect(tracking.stage).to be Stage.cut
-
-      expect(tracking
-        .next_tracking.stage).to be Stage.temper
-
-      expect(tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
-
+      tracking = subject.trackings_created[0]
+      expect(tracking.tracking_full_path).to eq([:cut, :temper, :delivery])
     end
   end
 
@@ -172,33 +112,11 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:product_lines) { [product_line, product_line2] }
 
     it 'generates right tracking stages' do
-      tracking_one = subject.tracking_created[0]
+      tracking_one = subject.trackings_created[0]
+      expect(tracking_one.tracking_full_path).to eq([:cut, :drill, :temper, :delivery])
 
-      expect(tracking_one.stage).to be Stage.cut
-
-      expect(tracking_one
-        .next_tracking.stage).to be Stage.drill
-
-      expect(tracking_one
-        .next_tracking
-        .next_tracking.stage).to be Stage.temper
-
-      expect(tracking_one
-        .next_tracking
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
-
-      tracking_two = subject.tracking_created[1]
-
-      expect(tracking_two.stage).to be Stage.cut
-
-      expect(tracking_two
-        .next_tracking.stage).to be Stage.polish
-
-      expect(tracking_two
-        .next_tracking
-        .next_tracking.stage).to be Stage.delivery
-
+      tracking_two = subject.trackings_created[1]
+      expect(tracking_two.tracking_full_path).to eq([:cut, :polish, :delivery])
     end
   end
 end
