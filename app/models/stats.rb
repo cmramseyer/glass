@@ -57,4 +57,33 @@ module Stats
     OpenStruct.new(days: days, stats: stats)
 
   end
+
+  def self.last_two_weeks_workload_per_stage_mvw
+    stats = []
+
+    # init an array with Date objects
+    days = (2.week.ago.to_date..Date.today).to_a
+
+    stats = HashWithIndifferentAccess.new
+
+    stats_mvw = Stats::LastDaysWorkloadMvw.all
+
+    # lets iterate over each stage
+    Stage.symbols.each do |stage_sym|
+
+      # and over each day
+      # and store sum in stats
+      # stats be like {cut: 10, drill: 5, ...}
+      stats[stage_sym] = days.map do |day|
+        # created_at: (day.beginning_of_day..day.end_of day)
+        stats_mvw.detect {|smvw| smvw.name == stage_sym.to_s.capitalize && smvw.created_at == day }&.workload || 0.0
+      end
+    end
+
+    # convert days to an array of human readable dates
+    days.map!(&:only_month_day)
+
+    OpenStruct.new(days: days, stats: stats)
+
+  end
 end
