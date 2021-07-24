@@ -43,11 +43,11 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     it 'generates right tracking stages' do
       tracking = subject.tracking_created[0]
       expect(tracking.stage).to be Stage.cut
-      expect(tracking.
-        next_tracking.stage).to be Stage.drill
-      expect(tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking
+        .next_tracking.stage).to be Stage.drill
+      expect(tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
     end
   end
 
@@ -62,17 +62,17 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
 
       expect(tracking.stage).to be Stage.cut
 
-      expect(tracking.
-        next_tracking.stage).to be Stage.drill
+      expect(tracking
+        .next_tracking.stage).to be Stage.drill
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.polish
+      expect(tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.polish
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking
+        .next_tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
     end
   end
 
@@ -87,23 +87,23 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
 
       expect(tracking.stage).to be Stage.cut
 
-      expect(tracking.
-        next_tracking.stage).to be Stage.drill
+      expect(tracking
+        .next_tracking.stage).to be Stage.drill
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.polish
+      expect(tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.polish
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.temper
+      expect(tracking
+        .next_tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.temper
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking
+        .next_tracking
+        .next_tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
     end
   end
 
@@ -118,17 +118,17 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
 
       expect(tracking.stage).to be Stage.cut
 
-      expect(tracking.
-        next_tracking.stage).to be Stage.drill
+      expect(tracking
+        .next_tracking.stage).to be Stage.drill
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.temper
+      expect(tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.temper
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking
+        .next_tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
 
     end
   end
@@ -144,12 +144,12 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
 
       expect(tracking.stage).to be Stage.cut
 
-      expect(tracking.
-        next_tracking.stage).to be Stage.temper
+      expect(tracking
+        .next_tracking.stage).to be Stage.temper
 
-      expect(tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
 
     end
   end
@@ -161,43 +161,43 @@ RSpec.describe Utility::TrackingGenerator, type: :model do
     let(:holes_quantity) { 1 }
     let(:tempered) { true }
 
-    let(:polish_name_2) { 'Flat Polish' }
-    let(:holes_quantity_2) { 0 }
-    let(:tempered_2) { false }
+    let(:polish_name2) { 'Flat Polish' }
+    let(:holes_quantity2) { 0 }
+    let(:tempered2) { false }
 
-    let(:polish_type_2) { create :polish_type, name: polish_name_2 }
-    let(:product_2) { create :product, name: 'Float 8mm. Clear', code: 'FL8CLE' }
-    let(:product_line_2) { create :product_line, product: product_2, holes_quantity: holes_quantity_2, polish_type: polish_type_2, tempered: tempered_2 }
+    let(:polish_type2) { create :polish_type, name: polish_name2 }
+    let(:product2) { create :product, name: 'Float 8mm. Clear', code: 'FL8CLE' }
+    let(:product_line2) { create :product_line, product: product2, holes_quantity: holes_quantity2, polish_type: polish_type2, tempered: tempered2 }
 
-    let(:product_lines) { [product_line, product_line_2] }
+    let(:product_lines) { [product_line, product_line2] }
 
     it 'generates right tracking stages' do
       tracking_one = subject.tracking_created[0]
 
       expect(tracking_one.stage).to be Stage.cut
 
-      expect(tracking_one.
-        next_tracking.stage).to be Stage.drill
+      expect(tracking_one
+        .next_tracking.stage).to be Stage.drill
 
-      expect(tracking_one.
-        next_tracking.
-        next_tracking.stage).to be Stage.temper
+      expect(tracking_one
+        .next_tracking
+        .next_tracking.stage).to be Stage.temper
 
-      expect(tracking_one.
-        next_tracking.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking_one
+        .next_tracking
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
 
       tracking_two = subject.tracking_created[1]
 
       expect(tracking_two.stage).to be Stage.cut
 
-      expect(tracking_two.
-        next_tracking.stage).to be Stage.polish
+      expect(tracking_two
+        .next_tracking.stage).to be Stage.polish
 
-      expect(tracking_two.
-        next_tracking.
-        next_tracking.stage).to be Stage.delivery
+      expect(tracking_two
+        .next_tracking
+        .next_tracking.stage).to be Stage.delivery
 
     end
   end

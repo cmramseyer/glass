@@ -14,13 +14,10 @@ module Service
     # es posible que order_creation se ejecute bien
     # y activation falle
     def run
-
       handle_service do
         @order.save!
         # create an activity register
-
         ::Activity.new_activity(@user, :created, @order, nil)
-
         ::JobActivation.perform_later(@order, @user)
       end
 

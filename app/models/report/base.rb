@@ -1,6 +1,5 @@
 module Report
   class Base
-
     include ReportSettings
 
     # each Report implements its own header, body and footer
@@ -30,7 +29,7 @@ module Report
     # so we could iterate over headers and footers info too, not only bodies
     def table_iterator(pdf, data, opts = {})
       rows = []
-      
+
       rows << data.body_columns.map do |column|
         data.send("#{column}_legend")
       end
@@ -40,7 +39,7 @@ module Report
       end
 
       table_real_width = table_percentage_width.map {|percentage| pdf.bounds.width * percentage}
-      
+
       # pdf.table(header_legend, column_widths: header_real_width, cell_style: { border_width: 0 })
 
       @data.collection.map do |obj|
@@ -49,12 +48,11 @@ module Report
         end
       end
 
-      opts = opts.merge!({ column_widths: table_real_width })
+      opts.merge!({ column_widths: table_real_width })
 
       pdf.table(rows, opts)
 
       pdf
     end
-
   end
 end

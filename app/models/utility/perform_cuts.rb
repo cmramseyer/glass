@@ -1,6 +1,5 @@
 module Utility
   class PerformCuts
-
     def initialize(tracking_cuts, user)
       @tracking_cuts = tracking_cuts
       @user = user
@@ -20,6 +19,5 @@ module Utility
         ::Service::PerformWork.new(tracking, quantity, @user).run
       end
     end
-
   end
 end

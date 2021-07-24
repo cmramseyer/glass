@@ -6,25 +6,19 @@ module Report
     def initialize(params = {})
       @params = params
       @obj = params.fetch(:obj, nil)
-      
-      timestamp = Time.now.strftime("%M%S")
-      
-      
       @generated_at = Time.now.to_s
       @user = params.fetch(:user, NilUser.new)
 
       create_pdf_and_set_config
 
-      
       type = params.fetch(:type, "Last orders").to_s_constant
 
       @data = "Report::Type::#{type}".constantize.new(@obj)
 
       # get filename from each @data report type
       @filename = @data.filename
-      @path = @filename + ".pdf"
+      @path = "#{@filename}.pdf"
 
-      
       header_str = params.fetch(:header, "Simple").to_s_constant
       body_str = params.fetch(:body, "Simple").to_s_constant
       footer_str = params.fetch(:footer, "Simple").to_s_constant
@@ -38,7 +32,6 @@ module Report
       self.class.include footer
 
       @cursor = @pdf.bounds.top
-
     end
 
     def draw
@@ -56,6 +49,5 @@ module Report
       page_size = @params.fetch(:page_size, "A4").upcase
       @pdf = Prawn::Document.new(margin: margin, page_size: page_size)
     end
-
   end
 end

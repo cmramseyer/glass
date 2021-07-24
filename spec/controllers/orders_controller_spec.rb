@@ -32,15 +32,16 @@ RSpec.describe OrdersController, type: :controller do
   let(:delivery_address) { 'Delivery Address'}
   let(:priority) { '2 - Normal' }
   let(:status) { 'created' }
-  let(:order_params) { 
-    { customer: customer,
+  let(:order_params) do
+    {
+      customer: customer,
       description: description,
       delivery_address: delivery_address,
       priority: priority,
       status: status,
       product_lines_attributes: product_lines
-    } 
-  }
+    }
+  end
 
   describe 'GET #index' do
     it "renders the in progress page" do

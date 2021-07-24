@@ -1,10 +1,8 @@
 module Utility
   class CutsValidator
-
     attr_accessor :tracking_cuts
 
     # are there pending cuts for cuts in the new program?
-
     def initialize(cuts, product)
       @cuts = cuts
       @product = product
@@ -31,23 +29,18 @@ module Utility
         product_line.width == width && product_line.height == height && product_line.product == product
       end
 
-
       cut_trackings = Tracking.where(stage: Stage.cut, product_line_id: product_lines.map(&:id))
 
       raise Error::CutMachineProgram.new "No pending cuts were found for Order #{order_id}, #{product.name} and size #{width}*#{height}" if cut_trackings.empty?
 
       cut_trackings.each do |tracking|
-        
         raise Error::CutMachineProgram.new "It is not allowed to cut #{quantity} units of #{product.name} from Order #{order_id} because there are only #{tracking.available_works} pending." if quantity > tracking.available_works
 
         # TODO
         # crear clase TrackingCut que herede de OpenStruct
 
         @tracking_cuts.add(tracking, quantity)
-
       end
-
-
     end
   end
 end

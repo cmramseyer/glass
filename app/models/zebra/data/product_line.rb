@@ -1,11 +1,9 @@
 module Zebra
   module Data
     class ProductLine
-
       attr_reader :order, :size, :customer, :holes, :delivery, :polish, :product, :product_code, :tempered, :description, :barcode
 
       def initialize(product_line)
-
         # assigns instance attributes
         # so self.attributes will return a hash with the attributes values
         # {order: "1234", size: "444*555", ...}
@@ -21,7 +19,6 @@ module Zebra
         @description = product_line.description.to_s[0..29]
         @barcode = product_line.barcode
       end
-
     end
   end
 end

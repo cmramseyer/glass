@@ -1,6 +1,5 @@
 module Utility
   class NewProgram
-
     attr_accessor :program_name, :product_code, :new_cuts, :cuts, :readable
 
     RESERVED_WORDS = ["PROGRAM=", "PRODUCT_CODE=", "NEW_CUT", "ORDER=", "X=", "Y=", "QTY="].freeze
@@ -24,7 +23,7 @@ module Utility
 
       @new_cuts.each do |new_cut|
         # ORDER, QTY, X, Y
-        lines = new_cut.split(/[\n]/)
+        lines = new_cut.split(/\n/)
         # TODO
         # fijarse como hacer para q luego de split n queden esp vacios
         lines.reject!(&:empty?)
@@ -33,12 +32,11 @@ module Utility
       end
 
       @readable = true
-
       self
     end
 
     def split
-      @text_split = @textarea.split(/[\n]/)
+      @text_split = @textarea.split(/\n/)
       @text_split.reject!(&:empty?)
     end
 
@@ -71,7 +69,7 @@ module Utility
       match = line.match(/PRODUCT_CODE=(.*$)/)
       @product_code = match[1]
     end
-    
+
     def check_new_cut_on_fourth_line
       line = @text_split[2]
       # [2] here, but 3rd line in textarea user input
@@ -89,8 +87,6 @@ module Utility
     end
 
     def check_variables_order(lines)
-      
-
       raise Error::CutMachineProgram.new "Line 1 inside a NEW_CUT block must be ORDER=" unless lines[0].starts_with? "ORDER="
       raise Error::CutMachineProgram.new "Line 2 inside a NEW_CUT block must be QTY=" unless lines[1].starts_with? "QTY="
       raise Error::CutMachineProgram.new "Line 3 inside a NEW_CUT block must be X=" unless lines[2].starts_with? "X="
@@ -99,7 +95,6 @@ module Utility
 
     def add_new_cut_to_cuts(lines)
       cut = OpenStruct.new
-      
       match = lines[0].match(/ORDER=(.*$)/)
       cut.order = match[1]
 
@@ -113,8 +108,6 @@ module Utility
       cut.y = match[1]
 
       @cuts << cut
-      
     end
-
   end
 end

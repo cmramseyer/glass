@@ -1,6 +1,6 @@
 module Error
   class ProviderApiServerDown < Error::OrderActivation
-    
+
     attr_accessor :order
 
     def initialize(order)
@@ -8,7 +8,7 @@ module Error
     end
 
     def message
-      "The Provider API Server for the new order for products stock is down right now. Please, retry later."
+      'The Provider API Server for the new order for products stock is down right now. Please, retry later.'
     end
   end
 end

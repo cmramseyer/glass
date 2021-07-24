@@ -1,7 +1,6 @@
 module Report
   module Type
     class Invoice
-
       FOR_ORDER = true
 
       def initialize(order)
@@ -33,14 +32,30 @@ module Report
         []
       end
 
-      def order_legend; "Order No." end
-      def customer_legend; "Customer" end
-      def delivery_address_legend; "Delivery Addr." end
+      def order_legend
+        "Order No."
+      end
+
+      def customer_legend
+        "Customer"
+      end
+
+      def delivery_address_legend
+        "Delivery Addr."
+      end
 
       # sum(&:width) must be 1 for 100% with table
-      def order_width; 0.2 end
-      def customer_width; 0.3 end
-      def deliver_address_width; 0.5 end
+      def order_width
+        0.2
+      end
+
+      def customer_width
+        0.3
+      end
+
+      def deliver_address_width
+        0.5
+      end
 
       def order_value
         @order.id.to_s
@@ -53,7 +68,6 @@ module Report
       def delivery_address_value
         @order.delivery_address
       end
-
 
       def product_legend
         "Product"
@@ -107,7 +121,6 @@ module Report
       def amount_value(product_line)
         product_line.amount
       end
-
     end
   end
 end

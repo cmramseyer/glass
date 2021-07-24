@@ -12,9 +12,7 @@
 
 module Zebra
   class Replacer
-
     MARK = '**'.freeze
-
     attr_accessor :zpl
 
     def initialize(data_object, zpl_format)
@@ -31,9 +29,7 @@ module Zebra
     end
 
     def check_that_all_variables_wrapped_in_mark_were_replaced
-      raise Error::Zebra.new "One or more variables were not replaced. ZPL string is: #{@zpl}" if @zpl.index(MARK)
+      raise Error::Zebra, "One or more variables were not replaced. ZPL string is: #{@zpl}" if @zpl.index(MARK)
     end
-    
   end
-
 end
