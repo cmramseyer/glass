@@ -62,20 +62,18 @@ RSpec.describe ProgramsController, type: :controller do
       get :new
       expect(response).to render_template('programs/new')
     end
-    
-   it "assigns new program" do
-     get :new
-     expect(assigns(:program)).to be_a_new(Program)
-   end
+    it "assigns new program" do
+      get :new
+      expect(assigns(:program)).to be_a_new(Program)
+    end
 
-   it "assigns new available_cuts" do
-     get :new
-     expect(assigns(:available_cuts).to_a).to eq([trackings[:cut]])
-   end
+    it "assigns new available_cuts" do
+      get :new
+      expect(assigns(:available_cuts).to_a).to eq([trackings[:cut]])
+    end
   end
 
   describe "POST #create" do
   end
 
 end
-

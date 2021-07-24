@@ -1,5 +1,4 @@
 RSpec.configure do |config|
-
   # This says that before the entire test suite runs, clear the test database
   # out completely. This gets rid of any garbage left over from interrupted
   # or poorly-written tests—a common source of surprising test behavior.
@@ -23,12 +22,9 @@ RSpec.configure do |config|
   # the Selenium backend. For these types of tests, transactions won’t work,
   # so this code overrides the setting and chooses 
   # the “truncation” strategy instead.
-  
   config.before(:each, :js => true) do
     DatabaseCleaner.strategy = :truncation
   end
-
-
 
   # These lines hook up database_cleaner around the beginning
   # and end of each test, telling it to execute whatever cleanup strategy 
@@ -41,6 +37,4 @@ RSpec.configure do |config|
   config.after(:each) do
     DatabaseCleaner.clean
   end
-
-
 end

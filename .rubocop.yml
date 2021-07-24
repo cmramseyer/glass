@@ -6,6 +6,10 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
+AllCops:
+  Exclude:
+    - 'db/seeds.rb'
+
 # Offense count: 4
 # Cop supports --auto-correct.
 # Configuration parameters: TreatCommentsAsGroupSeparators, Include.
@@ -22,138 +26,54 @@ Layout/BlockAlignment:
   Exclude:
     - 'Gemfile'
 
-# Offense count: 2
-# Cop supports --auto-correct.
 Layout/ClosingHeredocIndentation:
-  Exclude:
-    - 'app/models/zebra/alternative_config.rb'
-    - 'app/models/zebra/default_config.rb'
+  Enabled: true
 
-# Offense count: 2
-# Cop supports --auto-correct.
 Layout/ClosingParenthesisIndentation:
-  Exclude:
-    - 'app/models/notify.rb'
-    - 'app/models/utility/save_program.rb'
+  Enabled: true
 
-# Offense count: 3
-# Cop supports --auto-correct.
 Layout/EmptyLineAfterGuardClause:
-  Exclude:
-    - 'app/models/tracking.rb'
-    - 'app/models/utility/new_program.rb'
+  Enabled: true
 
-# Offense count: 4
-# Cop supports --auto-correct.
-# Configuration parameters: AllowAdjacentOneLineDefs, NumberOfEmptyLines.
 Layout/EmptyLineBetweenDefs:
-  Exclude:
-    - 'app/models/notify.rb'
-    - 'app/models/utility/tracking_generator.rb'
-    - 'app/models/zebra/alternative_adapter.rb'
-    - 'app/models/zebra/default_adapter.rb'
+  Enabled: true
 
-# Offense count: 29
-# Cop supports --auto-correct.
 Layout/EmptyLines:
   Enabled: false
 
 # Offense count: 12
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundAccessModifier:
-  Exclude:
-    - 'app/controllers/activities_controller.rb'
-    - 'app/controllers/cuts_controller.rb'
-    - 'app/controllers/orders_controller.rb'
-    - 'app/controllers/polish_types_controller.rb'
-    - 'app/controllers/product_lines_controller.rb'
-    - 'app/controllers/products_controller.rb'
-    - 'app/controllers/programs_controller.rb'
-    - 'app/controllers/stages_controller.rb'
-    - 'app/controllers/trackings_controller.rb'
-    - 'app/controllers/work_logs_controller.rb'
-    - 'app/models/report/default/product_line.rb'
-    - 'app/models/report/invoice/product_line.rb'
+  Enabled: false
 
-# Offense count: 37
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, no_empty_lines
 Layout/EmptyLinesAroundBlockBody:
   Enabled: false
 
-# Offense count: 58
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines, beginning_only, ending_only
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 
-# Offense count: 5
-# Cop supports --auto-correct.
 Layout/EmptyLinesAroundExceptionHandlingKeywords:
-  Exclude:
-    - 'app/controllers/orders_controller.rb'
-    - 'app/controllers/programs_controller.rb'
-    - 'app/models/service/order_activation.rb'
+  Enabled: false
 
 # Offense count: 19
 # Cop supports --auto-correct.
 Layout/EmptyLinesAroundMethodBody:
   Enabled: false
 
-# Offense count: 8
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: empty_lines, empty_lines_except_namespace, empty_lines_special, no_empty_lines
 Layout/EmptyLinesAroundModuleBody:
-  Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'app/models/handler/service.rb'
-    - 'app/models/notify.rb'
-    - 'app/models/report/default/adapter.rb'
-    - 'app/models/report/invoice/adapter.rb'
-    - 'app/models/utility/check_program.rb'
-    - 'app/models/zebra/labelary_api.rb'
-    - 'app/models/zebra/replacer.rb'
+  Enabled: true
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyleAlignWith, AutoCorrect, Severity.
-# SupportedStylesAlignWith: keyword, variable, start_of_line
 Layout/EndAlignment:
-  Exclude:
-    - 'app/jobs/job_launcher.rb'
+  Enabled: true
 
-# Offense count: 1
-# Cop supports --auto-correct.
-# Configuration parameters: AllowForAlignment, ForceEqualSignAlignment.
 Layout/ExtraSpacing:
-  Exclude:
-    - 'spec/factories/products.rb'
+  Enabled: true
 
 Layout/HeredocIndentation:
   Enabled: true
 
-# Offense count: 24
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: normal, rails
 Layout/IndentationConsistency:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/activities_controller.rb'
-    - 'app/controllers/cuts_controller.rb'
-    - 'app/controllers/orders_controller.rb'
-    - 'app/controllers/polish_types_controller.rb'
-    - 'app/controllers/product_lines_controller.rb'
-    - 'app/controllers/products_controller.rb'
-    - 'app/controllers/programs_controller.rb'
-    - 'app/controllers/stages_controller.rb'
-    - 'app/controllers/trackings_controller.rb'
-    - 'app/controllers/work_logs_controller.rb'
-    - 'spec/controllers/orders_controller_spec.rb'
-    - 'spec/controllers/programs_controller_spec.rb'
+  Enabled: true
 
 # Offense count: 23
 # Cop supports --auto-correct.
