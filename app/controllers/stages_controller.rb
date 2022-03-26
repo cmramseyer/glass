@@ -13,11 +13,17 @@ class StagesController < ApplicationController
   def show
     @order = Order.find(params[:order_id])
     @stage = Stage.find(params[:id])
+    puts "order stage"
     @order_stage = OrderStage.new(@order, @stage)
+    puts "cut stage"
     @cut_stage = OrderStage.new(@order, Stage.cut)
+    puts "drill stage"
     @drill_stage = OrderStage.new(@order, Stage.drill)
+    puts "polish stage"
     @polish_stage = OrderStage.new(@order, Stage.polish)
+    puts "temper stage"
     @temper_stage = OrderStage.new(@order, Stage.temper)
+    puts "delivery stage"
     @delivery_stage = OrderStage.new(@order, Stage.delivery)
   end
 

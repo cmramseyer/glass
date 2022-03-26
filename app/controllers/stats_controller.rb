@@ -11,7 +11,16 @@ class StatsController < ApplicationController
 
     stages = Stats.last_two_weeks_workload_per_stage
 
-    @echart_line_days = stages.days
-    @echart_line_values = stages.stats.to_json
+    tka = 2.week.ago.to_date.strftime("%Y-%m-%d")
+    tod = Date.today.strftime("%Y-%m-%d")
+    debugger
+    lala = Query::TotalWorkload.new(tka, tod).call
+    debugger
+
+    @echart_line_days = stages.map {|e| e["date"] }.uniq.sort
+    stages_sort = stages.sort_by {|e| e["date"] }
+    new_hash = {"Cut" => [], "Drill" => [], "Polish" => [], "Temper" => [], "Delivery" => []}
+    stages_sort.map {|a| a.except("date")}.each {|a| new_hash[a["stage_name"]] << a["total_workload"]}
+    @echart_line_values = new_hash.to_json
   end
 end

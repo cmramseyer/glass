@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(version: 2021_07_24_192930) do
        JOIN trackings t ON ((t.id = wl.tracking_id)))
        JOIN stages s ON ((t.stage_id = s.id)))
        JOIN product_lines pl ON ((pl.id = t.product_line_id)))
-    WHERE (wl.created_at > (('now'::text)::date - '14 days'::interval))
-    GROUP BY s.name, (wl.created_at)::date;
+    WHERE (wl.created_at > (CURRENT_DATE - '14 days'::interval))
+    GROUP BY s.name, ((wl.created_at)::date);
   SQL
 end
