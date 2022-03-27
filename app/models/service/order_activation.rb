@@ -2,9 +2,10 @@ module Service
   class OrderActivation < Service::Base
     attr_accessor :order, :result
 
-    def initialize(order, user)
+    def initialize(order, user, run_from_script = false)
       @order = order
       @user = user
+      @run_from_script = run_from_script
     end
 
     def run
@@ -16,8 +17,8 @@ module Service
         ##########################
         # FAKE SERVICES THAT RANDOMLY FAIL!!!
         # SEE AT THE END OF THE CURRENT FILE
-        send_mail(@order)
-        resupply_products(@order)
+        send_mail(@order) unless @run_from_script
+        resupply_products(@order) unless @run_from_script
         ##########################
 
         ######################################
@@ -30,7 +31,7 @@ module Service
 
         # This is an async process, better notify results
         # of execution with ActionCable
-        Notify.activation_success(@order)
+        Notify.activation_success(@order) unless @run_from_script
       end
 
     rescue StandardError => e

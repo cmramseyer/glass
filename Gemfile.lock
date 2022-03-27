@@ -20,6 +20,14 @@ GIT
       select2-rails
       switchery-rails
 
+GIT
+  remote: https://github.com/faker-ruby/faker.git
+  revision: 0deec175348ca756082f65349c32e967ff8ef6c5
+  tag: v2.1.0
+  specs:
+    faker (2.1.0)
+      i18n (>= 0.7)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -422,6 +430,7 @@ DEPENDENCIES
   dotenv-rails
   draper
   factory_bot_rails
+  faker!
   gentelella-rails!
   guard-rspec
   guard-rubocop
@@ -456,4 +465,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.17.2
+   1.17.3
