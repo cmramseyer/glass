@@ -212,11 +212,8 @@ function get_echart_theme(){
   };
 }
 
-function init_pie(){
-
-  var echartPie = echarts.init(document.getElementById('pie'), echart_theme);
-
-  echartPie.setOption({
+function get_options(pie_name){
+  return options = {
     tooltip: {
       trigger: 'item',
       formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -253,35 +250,19 @@ function init_pie(){
       type: 'pie',
       radius: '55%',
       center: ['50%', '48%'],
-      data: $('#pie').data('values')
+      data: $('#pie' + pie_name).data('values')
     }]
-    });
-
-    var dataStyle = {
-    normal: {
-      label: {
-      show: false
-      },
-      labelLine: {
-      show: false
-      }
     }
-    };
+}
 
-    var placeHolderStyle = {
-    normal: {
-      color: 'rgba(0,0,0,0)',
-      label: {
-      show: false
-      },
-      labelLine: {
-      show: false
-      }
-    },
-    emphasis: {
-      color: 'rgba(0,0,0,0)'
-    }
-  };
+function init_pie(){
+
+  var echartPieArea = echarts.init(document.getElementById('pieArea'), echart_theme);
+  echartPieArea.setOption(get_options("Area"));
+
+  var echartPieWeight = echarts.init(document.getElementById('pieWeight'), echart_theme);
+  echartPieWeight.setOption(get_options("Weight"));
+
 }
 
 
