@@ -6,8 +6,8 @@
 #
 default: &default
   adapter: postgresql
-  username: postgresql
-  password: postgresql
+  username: postgres
+  password: postgres
   timeout: 5000
   pool: 5
 
