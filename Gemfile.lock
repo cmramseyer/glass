@@ -102,6 +102,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.4)
+    bullet (7.0.1)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.11)
     byebug (11.1.3)
     capybara (3.35.3)
       addressable
@@ -398,6 +401,7 @@ GEM
     unicorn (6.0.0)
       kgio (~> 2.6)
       raindrops (~> 0.7)
+    uniform_notifier (1.16.0)
     virtus (2.0.0)
       axiom-types (~> 0.1)
       coercible (~> 1.0)
@@ -421,6 +425,7 @@ PLATFORMS
 DEPENDENCIES
   action-cable-testing
   active_model_serializers (= 0.10.0)
+  bullet
   byebug
   capybara
   cocoon
