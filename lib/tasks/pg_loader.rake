@@ -9,7 +9,7 @@ namespace :pg_loader do
     all_polish_types = PolishType.all
     current_user = User.find_by_email('admin@glass.com')
     
-    1000.times do 
+    10.times do 
       order = Order.new
       order.customer = Faker::Name.name
       order.description = Faker::Lorem.sentence
@@ -33,4 +33,69 @@ namespace :pg_loader do
 
 
   end
+
+  task random_cut: :environment do
+
+    puts "executing random cut"
+
+    current_user = User.find_by_email('admin@glass.com')
+    @cut_tracking = Tracking.where(stage: Stage.cut)
+    @available_cuts = @cut_tracking.select(&:available_works?)
+
+    if @available_cuts.empty?
+      puts "no available cuts"
+      return nil
+    end
+
+    tracking = @available_cuts.sample
+
+    program_name = Faker::Alphanumeric.alphanumeric(number: 10)
+    product_code = tracking.product_line_product_code
+    order_id = tracking.product_line.order.id
+    qty = rand(1..tracking.available_works)
+    x = tracking.product_line.width
+    y = tracking.product_line.height
+
+    new_program = "PROGRAM=#{program_name}\r\nPRODUCT_CODE=#{product_code}\r\nNEW_CUT\r\nORDER=#{order_id}\r\nQTY=#{qty}\r\nX=#{x}\r\nY=#{y}"
+
+    Service::CreateProgramAndPerformCuts.new(new_program, current_user).run
+
+  end
+
+  task random_work: :environment do
+
+    puts "executing random work"
+
+    current_user = User.find_by_email('admin@glass.com')
+    cut_id = Stage.find_by_name('Cut').id
+    available_tracking = Tracking.where.not(stage_id: cut_id).select(&:available_works?).sample
+    
+    if available_tracking.nil?
+      puts "no available work"
+      return nil
+    end
+    Service::PerformWork.new(available_tracking, 1, current_user).run
+
+  end
+
+  task random_script: :environment do
+
+    if rand(0..100) == 50
+      puts "creating order"
+      Rake::Task["pg_loader:orders"].execute
+    end
+
+    random = rand(0..9)
+    random > 7 ? Rake::Task["pg_loader:random_cut"].execute : Rake::Task["pg_loader:random_work"].execute
+
+  end
+
+  task execute_random_script: :environment do
+    1000.times do
+      sleep(10)
+      Rake::Task["pg_loader:random_script"].execute
+    end
+  end
+  
+  
 end
