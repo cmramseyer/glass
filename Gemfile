@@ -66,8 +66,9 @@ gem 'unicorn'
 
 # to get sidekiq working in devel and production too
 gem 'listen', '~> 3.0.5'
-
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :tag => 'v2.1.0'
+gem 'scenic'
+gem 'whenever', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -2,13 +2,24 @@
   <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel">
       <div class="x_title">
-        <h2>Historical area per product ordered</h2>
+        <h2>Historical area (m2) per product ordered</h2>
         
         <div class="clearfix"></div>
       </div>
       <div class="x_content">
+        <div data-legends="<%= @legends %>" data-values="<%= @area_values %>" id="pieArea" style="height:350px;"></div>
 
-        <div data-legends="<%= @legends %>" data-values="<%= @values %>" id="pie" style="height:350px;"></div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Historical weight (Kg) per product ordered</h2>
+        <div class="clearfix"></div>
+      </div>
+      <div class="x_content">
+        <div data-legends="<%= @legends %>" data-values="<%= @weight_values %>" id="pieWeight" style="height:350px;"></div>
 
       </div>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_18_145143) do
+ActiveRecord::Schema.define(version: 2021_07_24_192930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,4 +128,25 @@ ActiveRecord::Schema.define(version: 2018_12_18_145143) do
     t.integer "quantity"
   end
 
+
+  create_view "historical_surface_and_weight_mvw", materialized: true, sql_definition: <<-SQL
+      SELECT p.name,
+      p.code,
+      round(sum(((((pl.quantity * pl.width) * pl.height))::numeric / (1000000)::numeric)), 2) AS total_area,
+      round(sum(((((((pl.quantity * pl.width) * pl.height) * p.thickness))::numeric * 2.5) / (1000000)::numeric)), 2) AS total_weight
+     FROM (products p
+       LEFT JOIN product_lines pl ON ((p.id = pl.product_id)))
+    GROUP BY p.name, p.code;
+  SQL
+  create_view "last_days_workload_mvw", materialized: true, sql_definition: <<-SQL
+      SELECT s.name,
+      (wl.created_at)::date AS created_at,
+      round(sum((((((wl.quantity)::numeric * (s.workload)::numeric) * (pl.width)::numeric) * (pl.height)::numeric) / 1000000.0)), 2) AS workload
+     FROM (((work_logs wl
+       JOIN trackings t ON ((t.id = wl.tracking_id)))
+       JOIN stages s ON ((t.stage_id = s.id)))
+       JOIN product_lines pl ON ((pl.id = t.product_line_id)))
+    WHERE (wl.created_at > (CURRENT_DATE - '14 days'::interval))
+    GROUP BY s.name, ((wl.created_at)::date);
+  SQL
 end
