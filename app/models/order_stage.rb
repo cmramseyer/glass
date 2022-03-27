@@ -15,7 +15,7 @@ class OrderStage
     @order = order
     @stage = stage
     @product_lines = @order.product_lines
-    @trackings = Tracking.where(stage: stage, product_line_id: @product_lines.ids)
+    @trackings = Tracking.includes(:product_line).where(stage: stage, product_line_id: @product_lines.ids)
 
     set_partial_path
 
