@@ -5,8 +5,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-
-    orders = Order.all
+    orders = Order.all.includes(:product_lines)
     @rows = orders.map do |order| 
       OpenStruct.new(
         order: order,
