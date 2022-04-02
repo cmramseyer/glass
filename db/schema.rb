@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_192930) do
+ActiveRecord::Schema.define(version: 2022_03_27_032516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,5 +148,61 @@ ActiveRecord::Schema.define(version: 2021_07_24_192930) do
        JOIN product_lines pl ON ((pl.id = t.product_line_id)))
     WHERE (wl.created_at > (CURRENT_DATE - '14 days'::interval))
     GROUP BY s.name, ((wl.created_at)::date);
+  SQL
+  create_view "orders_progresses", sql_definition: <<-SQL
+      SELECT main.id,
+      main.priority,
+      main.customer,
+      main.status,
+      sum(
+          CASE
+              WHEN ((main.name)::text = 'Cut'::text) THEN main.completion
+              ELSE (0)::numeric
+          END) AS cut,
+      sum(
+          CASE
+              WHEN ((main.name)::text = 'Drill'::text) THEN main.completion
+              ELSE (0)::numeric
+          END) AS drill,
+      sum(
+          CASE
+              WHEN ((main.name)::text = 'Polish'::text) THEN main.completion
+              ELSE (0)::numeric
+          END) AS polish,
+      sum(
+          CASE
+              WHEN ((main.name)::text = 'Temper'::text) THEN main.completion
+              ELSE (0)::numeric
+          END) AS temper,
+      sum(
+          CASE
+              WHEN ((main.name)::text = 'Delivery'::text) THEN main.completion
+              ELSE (0)::numeric
+          END) AS delivery
+     FROM ( SELECT sub.id,
+              sub.status,
+              sub.priority,
+              sub.customer,
+              sub.name,
+              round((((sub.done)::numeric / (sub.qty)::numeric) * 100.0), 2) AS completion
+             FROM ( SELECT o.id,
+                      o.customer,
+                      o.description,
+                      o.priority,
+                      o.delivery_address,
+                      o.created_at,
+                      o.updated_at,
+                      o.activated_date,
+                      o.last_activation_message,
+                      o.status,
+                      s.name,
+                      sum(t.done) AS done,
+                      sum(pl.quantity) AS qty
+                     FROM (((orders o
+                       JOIN product_lines pl ON ((pl.order_id = o.id)))
+                       JOIN trackings t ON ((t.product_line_id = pl.id)))
+                       JOIN stages s ON ((s.id = t.stage_id)))
+                    GROUP BY o.id, s.name) sub) main
+    GROUP BY main.id, main.status, main.priority, main.customer;
   SQL
 end
