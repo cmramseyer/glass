@@ -1,8 +1,9 @@
 module Service
   class CreateProgramAndPerformCuts < Service::Base
-    def initialize(new_program_input, user)
+    def initialize(new_program_input, user, run_from_script = false)
       @new_program_input = new_program_input
       @user = user
+      @run_from_script = run_from_script
     end
 
     def run
@@ -26,7 +27,7 @@ module Service
 
         Utility::SaveProgram.new(program_name, product, tracking_cuts, @user).run
 
-        Utility::PerformCuts.new(tracking_cuts, @user).run
+        Utility::PerformCuts.new(tracking_cuts, @user, @run_from_script).run
       end
     end
   end
