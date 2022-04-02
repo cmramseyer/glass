@@ -1,0 +1,40 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Program</th>
+      <th>Product</th>
+      <th>User</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @program.name %></td>
+      <td><%= @program.product.name %></td>
+      <td><%= @program.user_username %></td>
+      <td><%= @program.created_at.normal_format %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Qty</th>
+      <th>Width</th>
+      <th>Height</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @program.cuts.each do |cut| %>
+      <tr>
+        <td><%= cut.order_id %></td>
+        <td><%= cut.quantity %></td>
+        <td><%= cut.width %></td>
+        <td><%= cut.height %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

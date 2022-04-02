@@ -4,7 +4,7 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.all
+    @programs = Program.includes(:product, :user, cuts: [tracking: :product_line]).all.limit(20)
   end
 
   # GET /programs/1
@@ -15,8 +15,7 @@ class ProgramsController < ApplicationController
   # GET /programs/new
   def new
     @program = Program.new
-    @cut_tracking = Tracking.where(stage: Stage.cut)
-    @available_cuts = @cut_tracking.select(&:available_works?)
+    @available_cuts = Tracking.includes(product_line: [:order, :product]).where(stage_id: Stage.cut.id).joins(:product_line).where('trackings.done < product_lines.quantity')
   end
 
   # GET /programs/1/edit
