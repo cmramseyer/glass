@@ -1,0 +1,6 @@
+var content = '<%= escape_javascript(render :partial => "programs/details", locals: { program: @program })%>';
+
+update_program_detail_content(content);
+
+console.log('lele')
+$("div.modal").modal("show");

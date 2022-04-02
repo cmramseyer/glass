@@ -10,4 +10,29 @@ function init_textarea_sample_program(){
 $( document ).on('turbolinks:load', function() {
   init_textarea_new_program();
   init_textarea_sample_program();
+
+  $('.btn-view-program-details').click(function() {
+    const program_id = $(this).data("program-id");
+    $.ajax({
+      type: 'GET',
+      dataType: 'js ',
+      url: '/programs/'+ program_id,
+      data: {},
+      cache: false,
+      success: function(data, textStatus, res) {
+        console.log(res)
+      },
+      error: function(data, textStatus, res){
+        console.log(res)
+        console.log(data)
+        console.log(textStatus)
+      }
+    });
+  });
 });
+
+function update_program_detail_content(content){
+  $('.modal-body').html(content);
+}
+
+

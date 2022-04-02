@@ -4,7 +4,7 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.all
+    @programs = Program.includes(:product, :user, cuts: [tracking: :product_line]).all.limit(100)
   end
 
   # GET /programs/1
