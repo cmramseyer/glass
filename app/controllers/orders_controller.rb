@@ -5,17 +5,9 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    orders = Order.all.includes(:product_lines)
-    @rows = orders.map do |order| 
-      OpenStruct.new(
-        order: order,
-        cut: OrderStage.new(order, Stage.cut),
-        drill: OrderStage.new(order, Stage.drill),
-        polish: OrderStage.new(order, Stage.polish),
-        temper: OrderStage.new(order, Stage.temper),
-        delivery: OrderStage.new(order, Stage.delivery)
-      )
-    end
+    orders = OrdersProgress.all.sort_by(&:id)
+
+    @rows = orders
 
   end
 

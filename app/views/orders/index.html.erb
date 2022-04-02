@@ -29,20 +29,21 @@
           <tbody>
             <% @rows.each do |row| %>
               <tr>
-                <td><%= row.order.decorate.button_go_to %></td>
-                <td><%= row.order.customer %></td>
-                <td><%= row.cut.decorate.progress_link %></td>
-                <td><%= row.drill.decorate.progress_link %></td>
-                <td><%= row.polish.decorate.progress_link %></td>
-                <td><%= row.temper.decorate.progress_link %></td>
-                <td><%= row.delivery.decorate.progress_link %></td>
+                <td><%= row.decorate.button_go_to %></td>
+                <td><%= row.customer %></td>
+                <%#= row.cut.decorate.progress_link %>
+                <td><%= row.decorate.progress_link(:cut) %></td>
+                <td><%= row.decorate.progress_link(:drill) %></td>
+                <td><%= row.decorate.progress_link(:polish) %></td>
+                <td><%= row.decorate.progress_link(:temper) %></td>
+                <td><%= row.decorate.progress_link(:delivery) %></td>
                 <td>
-                  <% if row.order.activated? %>
+                  <% if row.activated? %>
                   <% else %>
                     <%= link_to "<i class='fa fa-cogs'></i> Retry Activation".html_safe, order_activation_index_path(order_id: row.order.id), method: :post, class: 'btn btn-danger btn-xs', remote: true %>
                   <% end %>
                 </td>
-                <td><%= priority_label(row.order.priority) %></td>
+                <td><%= priority_label(row.priority) %></td>
               </tr>
             <% end %>
           </tbody>

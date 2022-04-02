@@ -2,9 +2,9 @@ module ApplicationHelper
 
   def priority_label(priority)
     case priority
-    when '1 - High' then color = 'danger'
-    when '2 - Normal' then color = 'success'
-    when '3 - Low' then color = 'info'
+    when 'High' then color = 'danger'
+    when 'Normal' then color = 'success'
+    when 'Low' then color = 'info'
     end
     "<span class='label label-#{color}'>#{priority}</span>".html_safe
   end
